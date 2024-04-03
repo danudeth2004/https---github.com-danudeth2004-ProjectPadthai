@@ -11,7 +11,7 @@ router.get('/order', function (req, res, next) {
 router.post('/order', function (req, res, next) {
     
     /* customer & order_income */
-    var tel_temp = req.body.customer_tel;
+    /*var tel_temp = req.body.customer_tel;
 
     const queryString_cus = 'INSERT INTO customer (customer_tel) VALUES (?)'
     database.query(queryString_cus, [tel_temp], (err, data) => {
@@ -40,7 +40,7 @@ router.post('/order', function (req, res, next) {
                 else console.log("Query Order Incoming Successfully.");
             });
         };
-    });
+    });*/
 
     /* order_detail */
     var noodles_type_tempEN = req.body.noodlesEN;
