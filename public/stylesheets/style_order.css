@@ -2,10 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "IBM Plex Sans Thai", sans-serif;
+    font-weight: 500;
 }
 
 body {
-    font-family: "Roboto Condensed", sans-serif;
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -51,7 +52,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 500;
+    font-size: 18px;
 }
 .lang:hover i::before{
     font-size: 60px;
@@ -62,7 +63,7 @@ body {
     position: absolute;
     margin: 0;
     padding: 0;
-    right: 3%;
+    right: 1.8%;
 }
 .cart i {
     color: white;
@@ -80,7 +81,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 500;
+    font-size: 18px;
 }
 
 .add-to-cart {
@@ -139,7 +140,6 @@ select {
     font-size: 30px;
     font-weight: 500;
     padding-left: 3%;
-    font-family: "Roboto Condensed", sans-serif;
     border-radius: 7px;
     background-color: #573924;
     color: white;

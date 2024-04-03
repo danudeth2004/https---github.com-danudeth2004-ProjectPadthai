@@ -8,10 +8,10 @@ router.get('/', function(req, res, next) {
 
 router.get("/order", (req, res, next) => {
 
-  const noodles_query = "SELECT noodles_nameTH FROM noodles_type_th;";
-  const meat_query = "SELECT meat_nameTH FROM meat_type_th;";
-  const topping_query = "SELECT topping_nameTH FROM topping_list_th;";
-  const veg_query = "SELECT veg_nameTH FROM veg_list_th;";
+  const noodles_query = "SELECT noodles_nameTH FROM noodles_type;";
+  const meat_query = "SELECT meat_nameTH FROM meat_type;";
+  const topping_query = "SELECT topping_nameTH FROM topping_list;";
+  const veg_query = "SELECT veg_nameTH FROM veg_list;";
 
   database.query(noodles_query, (err, noodles_result) => {
       if (err) {
@@ -52,6 +52,69 @@ router.get("/order", (req, res, next) => {
           });
       });
   });
+});
+
+router.post('/order', function (req, res, next) {
+    var noodles_type_tempTH = req.body.noodlesTH;
+    var meat_type_tempTH = req.body.meatTH;
+
+    var add_veg_tempTH = req.body.vegTH;
+    var veg_tempTH =  "";
+
+    var add_topping_tempTH = req.body.topTH;
+    var topping_tempTH = "";
+
+    if(add_veg_tempTH === undefined){
+        veg_tempTH = "None";
+    }
+    else if(add_veg_tempTH.length>2){
+        for (let i = 0; i < add_veg_tempTH.length; i++) {
+            veg_tempTH += add_veg_tempTH[i];
+        }
+    }
+    else{
+        for (let i = 0; i < add_veg_tempTH.length; i++) {
+            if(i<add_veg_tempTH.length-1){
+                veg_tempTH += add_veg_tempTH[i]+", ";
+            }
+            else{
+                veg_tempTH += add_veg_tempTH[i];
+            }
+        }
+    }
+
+    if(add_topping_tempTH === undefined){
+        topping_tempTH = "None";
+    }
+    else if(add_topping_tempTH.length>4){
+        for (let i = 0; i < add_veg_tempTH.length; i++) {
+            topping_tempTH += add_topping_tempTH[i];
+        }
+    }
+    else{
+        for (let i = 0; i < add_topping_tempTH.length; i++) {
+            if(i<add_topping_tempTH.length-1){
+                topping_tempTH += add_topping_tempTH[i]+", ";
+            }
+            else{
+                topping_tempTH += add_topping_tempTH[i];
+            }
+        }
+    }
+    
+    const queryString_detail = 'INSERT INTO order_detail (noodles_nameTH, meat_nameTH, topping_nameTH, veg_nameTH) VALUES (?, ?, ?, ?)';
+    database.query(queryString_detail, [noodles_type_tempTH, meat_type_tempTH, topping_tempTH, veg_tempTH],(err, data) => {
+    if(err){
+        console.error(err);
+    }
+    else console.log("Query Successfully.");
+
+    });
+    res.redirect('order');
+});
+
+router.get('/order/cart', function(req, res, next) {
+  res.render('th/cart', { title: 'CartTH' });
 });
 
 module.exports = router;

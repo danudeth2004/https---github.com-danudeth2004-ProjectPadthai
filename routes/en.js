@@ -4,10 +4,10 @@ var database = require('../database');
 
 router.get("/order", (req, res, next) => {
 
-    const noodles_query = "SELECT noodles_nameEN FROM noodles_type_en;";
-    const meat_query = "SELECT meat_nameEN FROM meat_type_en;";
-    const topping_query = "SELECT topping_nameEN FROM topping_list_en;";
-    const veg_query = "SELECT veg_nameEN FROM veg_list_en;";
+    const noodles_query = "SELECT noodles_nameEN FROM noodles_type;";
+    const meat_query = "SELECT meat_nameEN FROM meat_type;";
+    const topping_query = "SELECT topping_nameEN FROM topping_list;";
+    const veg_query = "SELECT veg_nameEN FROM veg_list;";
   
     database.query(noodles_query, (err, noodles_result) => {
         if (err) {
@@ -85,6 +85,7 @@ router.post('/order', function (req, res, next) {
     });*/
 
     /* order_detail */
+
     var noodles_type_tempEN = req.body.noodlesEN;
     var meat_type_tempEN = req.body.meatEN;
 

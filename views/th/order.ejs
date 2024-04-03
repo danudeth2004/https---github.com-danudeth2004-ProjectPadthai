@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -9,7 +9,7 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=Roboto+Condensed:ital,wght@0,800;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
     <form method="post">
@@ -29,7 +29,8 @@
                 <p><br>ตะกร้าของคุณ</p>
             </div>
         </div>
-        <button class="add-to-cart" onclick="checkDropdown()" type="submit"><i class='bx bx-plus-circle' ></i>  เพิ่มในตะกร้า</button>
+
+        <button class="add-to-cart" onclick="checkDropdown()" type="submit"><i class='bx bx-plus-circle' ><p>เพิ่มในตะกร้า</p></i></button>
         <table>
             <tr>
                 <td colspan="2">
@@ -41,7 +42,7 @@
                         <img src="../images/order/instant.jpg" id="image5" width="600" height="400" hidden="overflow">
                     </div>
                     <div class="select">
-                        <input type="hidden" id="n1" name="noodlesEN" value="">
+                        <input type="hidden" id="n1" name="noodlesTH" value="">
                         <select id="noodles" onchange="showImgNoodles()" width="90%">
                             <label for="n0"><option value="none" selected class="selected">เลือกประเภทเส้น</option></label>
                         <% for(var i=0; i < noodles.length;i++){ %>
@@ -56,7 +57,7 @@
                         <img src="../images/order/shrimp.jpg" id="image7" width="600px" height="400px" hidden="overflow">
                     </div>
                     <div class="select">
-                        <input type="hidden" id="n2" name="meatEN" value="">
+                        <input type="hidden" id="n2" name="meatTH" value="">
                         <select id="meat" onchange="showImgMeat()" width="90%">
                             <label for="n0"><option value="none" selected class="selected">เลือกประเภทเนื้อสัตว์</option></label>
                         <% for(var i=0; i < meats.length;i++){ %>
@@ -72,7 +73,7 @@
                         <div class="content">
                             <% for(var i=0; i < vegs.length;i++){ %>
                                 <p><%= vegs[i].veg_nameTH %></p>
-                                <input type="checkbox" id="veg<%= i+1 %>" name="vegEN" value="<%= vegs[i].veg_nameTH %>"/>
+                                <input type="checkbox" id="veg<%= i+1 %>" name="vegTH" value="<%= vegs[i].veg_nameTH %>"/>
                                 <label for="veg<%= i+1 %>">
                                     <img src="../images/order/veg<%= i+1 %>.jpg" width="600px" height="250px"/>
                                 </label>
@@ -85,7 +86,7 @@
                         <div class="content2">
                             <% for(var i=0; i < toppings.length-2;i++){ %>
                                 <p><%= toppings[i].topping_nameTH %></p>
-                                <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameTH %>"/>
+                                <input type="checkbox" id="top<%= i+1 %>" name="topTH" value="<%= toppings[i].topping_nameTH %>"/>
                                 <label for="top<%= i+1 %>">
                                     <img src="../images/order/top<%= i+1 %>.jpg" width="292.5px" height="220px">
                                 </label>
@@ -94,7 +95,7 @@
                         <div class="content2">  
                             <% for(var i=2; i < toppings.length;i++){ %>
                                 <p><%= toppings[i].topping_nameTH %></p>
-                                <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameTH %>"/>
+                                <input type="checkbox" id="top<%= i+1 %>" name="topTH" value="<%= toppings[i].topping_nameTH %>"/>
                                 <label for="top<%= i+1 %>">
                                     <img src="../images/order/top<%= i+1 %>.jpg" width="292.5px" height="220px">
                                 </label>
