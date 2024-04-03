@@ -20,11 +20,11 @@
         <input type="hidden" id="id" name="customer_id" value="">
         <button class="back"><i class='bx bxs-chevron-left' ></i></button>
         <div class="lang">
-            <i class="fa-solid fa-globe" onclick="changeTH()"></i>
-            <p><br>EN Lang</p>
+            <i class="fa-solid fa-globe" onclick="changeEN()"></i>
+            <p><br>TH Lang</p>
         </div>
         <div class="cart">
-            <i class="fa-solid fa-cart-shopping" onclick="linktocartEN()"></i>
+            <i class="fa-solid fa-cart-shopping" onclick="linktocartEN()"></i> <!-- linktocartTH -->
             <p><br>Your Cart</p>
         </div>
         <button class="add-to-cart" onclick="checkDropdown()" type="submit"><i class='bx bx-plus-circle' ></i>  Add to Cart</button>
@@ -41,9 +41,9 @@
                     <div class="select">
                         <input type="hidden" id="n1" name="noodlesEN" value="">
                         <select id="noodles" onchange="showImgNoodles()" width="90%">
-                            <label for="n0"><option value="none" selected class="selected">Choose Noodles</option></label>
+                            <label for="n0"><option value="none" selected class="selected">เลือกประเภทเส้น</option></label>
                         <% for(var i=0; i < noodles.length;i++){ %>
-                            <label for="n1"><option value="<%= noodles[i].noodles_nameEN %>"><%= noodles[i].noodles_nameEN %></option></label>
+                            <label for="n1"><option value="<%= noodles[i].noodles_nameTH %>"><%= noodles[i].noodles_nameTH %></option></label>
                         <% } %>
                         </select>
                     </div>
@@ -56,9 +56,9 @@
                     <div class="select">
                         <input type="hidden" id="n2" name="meatEN" value="">
                         <select id="meat" onchange="showImgMeat()" width="90%">
-                            <label for="n0"><option value="none" selected class="selected">Choose Meats</option></label>
+                            <label for="n0"><option value="none" selected class="selected">เลือกประเภทเนื้อสัตว์</option></label>
                             <% for(var i=0; i < meats.length;i++){ %>
-                                <label for="n2"><option value="<%= meats[i].meat_nameEN %>"><%= meats[i].meat_nameEN %></option></label>
+                                <label for="n2"><option value="<%= meats[i].meat_nameTH %>"><%= meats[i].meat_nameTH %></option></label>
                             <% } %>
                         </select>
                     </div>
@@ -69,8 +69,8 @@
                     <div class="object4">
                         <div class="content">
                             <% for(var i=0; i < vegs.length;i++){ %>
-                                <p><%= vegs[i].veg_nameEN %></p>
-                                <input type="checkbox" id="veg<%= i+1 %>" name="vegEN" value="<%= vegs[i].veg_nameEN %>"/>
+                                <p><%= vegs[i].veg_nameTH %></p>
+                                <input type="checkbox" id="veg<%= i+1 %>" name="vegEN" value="<%= vegs[i].veg_nameTH %>"/>
                                 <label for="veg<%= i+1 %>">
                                     <img src="../images/order/veg<%= i+1 %>.jpg" width="600px" height="250px"/>
                                 </label>
@@ -82,8 +82,8 @@
                     <div class="object4">
                         <div class="content2">
                             <% for(var i=0; i < toppings.length-2;i++){ %>
-                                <p><%= toppings[i].topping_nameEN %></p>
-                                <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameEN %>"/>
+                                <p><%= toppings[i].topping_nameTH %></p>
+                                <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameTH %>"/>
                                 <label for="top<%= i+1 %>">
                                     <img src="../images/order/top<%= i+1 %>.jpg" width="292.5px" height="220px">
                                 </label>
@@ -92,8 +92,8 @@
                         <div class="content2">
 
                             <% for(var i=2; i < toppings.length;i++){ %>
-                                <p><%= toppings[i].topping_nameEN %></p>
-                                <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameEN %>"/>
+                                <p><%= toppings[i].topping_nameTH %></p>
+                                <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameTH %>"/>
                                 <label for="top<%= i+1 %>">
                                     <img src="../images/order/top<%= i+1 %>.jpg" width="292.5px" height="220px">
                                 </label>
