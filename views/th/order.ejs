@@ -19,15 +19,17 @@
         <input type="hidden" id="tel" name="customer_tel" value="None">
         <input type="hidden" id="id" name="customer_id" value="">
         <button class="back"><i class='bx bxs-chevron-left' ></i></button>
-        <div class="lang">
-            <i class="fa-solid fa-globe" onclick="changeEN()"></i>
-            <p><br>TH Lang</p>
+        <div class="corner">
+            <div class="lang">
+                <i class="fa-solid fa-globe" onclick="changeEN()"></i>
+                <p><br>เปลี่ยนภาษา</p>
+            </div>
+            <div class="cart">
+                <i class="fa-solid fa-cart-shopping" onclick="linktocartEN()"></i> <!-- linktocartTH -->
+                <p><br>ตะกร้าของคุณ</p>
+            </div>
         </div>
-        <div class="cart">
-            <i class="fa-solid fa-cart-shopping" onclick="linktocartEN()"></i> <!-- linktocartTH -->
-            <p><br>Your Cart</p>
-        </div>
-        <button class="add-to-cart" onclick="checkDropdown()" type="submit"><i class='bx bx-plus-circle' ></i>  Add to Cart</button>
+        <button class="add-to-cart" onclick="checkDropdown()" type="submit"><i class='bx bx-plus-circle' ></i>  เพิ่มในตะกร้า</button>
         <table>
             <tr>
                 <td colspan="2">
