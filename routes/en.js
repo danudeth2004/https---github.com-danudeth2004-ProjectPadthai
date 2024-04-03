@@ -4,8 +4,52 @@ var router = express.Router();
 
 var database = require('../database');
 
-router.get('/order', function (req, res, next) {
-    res.render('en/order',{ title: 'OrderEN'});
+router.get("/order", (req, res, next) => {
+
+    const noodles_query = "SELECT noodles_nameEN FROM noodles_type_en;";
+    const meat_query = "SELECT meat_nameEN FROM meat_type_en;";
+    const topping_query = "SELECT topping_nameEN FROM topping_list_en;";
+    const veg_query = "SELECT veg_nameEN FROM veg_list_en;";
+  
+    database.query(noodles_query, (err, noodles_result) => {
+        if (err) {
+          console.error("Error executing query:", err);
+          res.status(500).send("Error executing query");
+          return;
+        }
+  
+        database.query(meat_query, (err, meats_result) => {
+            if (err) {
+                console.error("Error executing query:", err);
+                res.status(500).send("Error executing query");
+                return;
+            }
+  
+            database.query(topping_query, (err, toppings_result) => {
+                if (err) {
+                    console.error("Error executing query:", err);
+                    res.status(500).send("Error executing query");
+                    return;
+                }
+  
+                database.query(veg_query, (err, vegs_result) => {
+                    if (err) {
+                        console.error("Error executing query:", err);
+                        res.status(500).send("Error executing query");
+                        return;
+                    }
+  
+                    res.render("en/order", 
+                    {title: "OrderEN",
+                    noodles: noodles_result,
+                    meats: meats_result,
+                    toppings: toppings_result,
+                    vegs: vegs_result 
+                    });
+                });
+            });
+        });
+    });
 });
 
 router.post('/order', function (req, res, next) {
@@ -21,7 +65,7 @@ router.post('/order', function (req, res, next) {
         else console.log("Query Customer Incoming Successfully.");
     });
     
-    const queryString_customer_id = 'SELECT customer_id from customer order by customer_id desc limit 1';
+    const queryString_customer_id = 'SELECT customer_id FROM customer ORDER BY customer_id DESC LIMIT 1';
 
     database.query(queryString_customer_id, function (err, cus_id_data) {
         if (err) {

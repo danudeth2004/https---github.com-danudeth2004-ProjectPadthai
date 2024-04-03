@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Order Here</title>
+    <title>Order Here!</title>
     <link rel="stylesheet" href="/stylesheets/style_order.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel="stylesheet">
@@ -37,7 +37,7 @@
             else {
                 document.getElementById("image3").style.display='none'
             }
-            if(img == "Narrow rice noodles"){
+            if(img == "Narrow rice Noodles"){
                 document.getElementById("image4").style.display='inline-block'
             }
             else {
@@ -64,7 +64,7 @@
             else {
                 document.getElementById("image6").style.display='none'
             }
-            if(img == "Shrimp"){
+            if(img == "Prawn"){
                 document.getElementById("image7").style.display='inline-block'
             }
             else {
@@ -131,11 +131,9 @@
                         <input type="hidden" id="n1" name="noodlesEN" value="">
                         <select id="noodles" onchange="showImgNoodles()" width="90%">
                             <label for="n0"><option value="none" selected class="selected">Choose Noodles</option></label>
-                            <label for="n1"><option value="Rice Stick Noodles">Rice Stick Noodles</option></label>
-                            <label for="n2"><option value="Wide Rice Noodles">Wide Rice Noodles</option></label>
-                            <label for="n3"><option value="Glass Noodles">Glass Noodles</option></label>
-                            <label for="n4"><option value="Narrow rice noodles">Narrow rice noodles</option></label>
-                            <label for="n5"><option value="Instant Noodles">Instant Noodles</option></label>
+                        <% for(var i=0; i < noodles.length;i++){ %>
+                            <label for="n1"><option value="<%= noodles[i].noodles_nameEN %>"><%= noodles[i].noodles_nameEN %></option></label>
+                        <% } %>
                         </select>
                     </div>
                 </td>
@@ -148,8 +146,9 @@
                         <input type="hidden" id="n2" name="meatEN" value="">
                         <select id="meat" onchange="showImgMeat()" width="90%">
                             <label for="n0"><option value="none" selected class="selected">Choose Meats</option></label>
-                            <label for="n2"><option value="Pork">Pork</option></label>
-                            <label for="n3"><option value="Shrimp">Shrimp</option></label>
+                            <% for(var i=0; i < meats.length;i++){ %>
+                                <label for="n2"><option value="<%= meats[i].meat_nameEN %>"><%= meats[i].meat_nameEN %></option></label>
+                            <% } %>
                         </select>
                     </div>
                 </td>
@@ -158,44 +157,36 @@
                 <td colspan="2">
                     <div class="object4">
                         <div class="content">
-                            <p>Bean sprout</p>
-                            <input type="checkbox" id="veg1" name="vegEN" value="Bean sprout"/>
-                            <label for="veg1">
-                                <img src="../images/order/veg1.jpg" width="600px" height="250px"/>
-                            </label>
-                            <p>Chinese chive</p>
-                            <input type="checkbox" id="veg2" name="vegEN" value="Chinese chive"/>
-                            <label for="veg2">
-                                <img src="../images/order/veg2.jpg"/ width="600px" height="250px">
-                            </label>
+                            <% for(var i=0; i < vegs.length;i++){ %>
+                                <p><%= vegs[i].veg_nameEN %></p>
+                                <input type="checkbox" id="veg<%= i+1 %>" name="vegEN" value="<%= vegs[i].veg_nameEN %>"/>
+                                <label for="veg<%= i+1 %>">
+                                    <img src="../images/order/veg<%= i+1 %>.jpg" width="600px" height="250px"/>
+                                </label>
+                            <% } %>
                         </div>
                     </div>
                 </td>
                 <td>
                     <div class="object4">
                         <div class="content2">
-                            <p>Roasted nuts</p>
-                            <input type="checkbox" id="top1" name="topEN" value="Roasted nuts"/>
-                            <label for="top1">
-                                <img src="../images/order/top1.jpg"/ width="292.5px" height="220px">
-                            </label>
-                            <p>Dried Salted Prawn</p>
-                            <input type="checkbox" id="top2" name="topEN" value="Dried Salted Prawn"/>
-                            <label for="top2">
-                                <img src="../images/order/top2.jpg"/ width="292.5px" height="220px">
-                            </label>
+                            <% for(var i=0; i < toppings.length-2;i++){ %>
+                                <p><%= toppings[i].topping_nameEN %></p>
+                                <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameEN %>"/>
+                                <label for="top<%= i+1 %>">
+                                    <img src="../images/order/top<%= i+1 %>.jpg" width="292.5px" height="220px">
+                                </label>
+                            <% } %>
                         </div>
                         <div class="content2">
-                            <p>Crackling</p>
-                            <input type="checkbox" id="top3" name="topEN" value="Crackling"/>
-                            <label for="top3">
-                                <img src="../images/order/top3.jpg"/ width="292.5px" height="220px">
-                            </label>
-                            <p>Bean curd</p>
-                            <input type="checkbox" id="top4" name="topEN" value="Bean curd"/>
-                            <label for="top4">
-                                <img src="../images/order/top4.jpg"/ width="292.5px" height="220px">
-                            </label>
+
+                            <% for(var i=2; i < toppings.length;i++){ %>
+                                <p><%= toppings[i].topping_nameEN %></p>
+                                <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameEN %>"/>
+                                <label for="top<%= i+1 %>">
+                                    <img src="../images/order/top<%= i+1 %>.jpg" width="292.5px" height="220px">
+                                </label>
+                            <% } %>
                         </div>
                     </div>
                 </td>
