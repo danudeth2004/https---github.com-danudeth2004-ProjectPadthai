@@ -100,10 +100,10 @@ router.post('/order', function (req, res, next) {
                 }
             }
 
-            var orderid = order_id_data.map(item => [item.order_id]);
+            var values2 = order_id_data.map(item => [item.order_id]);
 
-            const queryString_detail = 'INSERT INTO order_detail (order_id, noodles_nameEN, meat_nameEN, topping_nameEN, add_veg_nameEN) VALUES (?, ?, ?, ?, ?)';
-            database.query(queryString_detail, [orderid, noodles_type_tempEN, meat_type_tempEN, topping_tempEN, veg_tempEN],(err, data) => {
+            const queryString_detail = 'INSERT INTO order_detail (order_id, noodles_nameEN, meat_nameEN, topping_nameEN, veg_nameEN) VALUES (?, ?, ?, ?, ?)';
+            database.query(queryString_detail, [values2, noodles_type_tempEN, meat_type_tempEN, topping_tempEN, veg_tempEN],(err, data) => {
             if(err){
                 console.error(err);
             }
