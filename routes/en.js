@@ -77,7 +77,6 @@ router.post('/order', function (req, res, next) {
         };
     });
     res.redirect('order');
-    res.send(req.body);
 });
 
 router.get('/order/cart', function(req, res, next) {
