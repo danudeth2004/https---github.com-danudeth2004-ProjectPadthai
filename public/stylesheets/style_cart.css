@@ -58,6 +58,13 @@ h1 {
         align-items: center;
     }
 
+    .table-footer {
+      background-color: #B5A499;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+  }
+
     .col-1 {
         flex-basis: 2%;
     }
@@ -84,6 +91,11 @@ h1 {
 
     .col-7 {
         flex-basis: 4%;
+    }
+    
+    .col-8 {
+        text-align: center;
+        flex-basis: 100%;
     }
 
     @media all and (max-width: 767px) {

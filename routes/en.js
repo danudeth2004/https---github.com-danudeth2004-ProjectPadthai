@@ -137,8 +137,6 @@ router.get("/order", (req, res, next) => {
                         return;
                     }
 
-                    req.session.orderDetail = { noodles: noodles_result, meats: meats_result, toppings: toppings_result, vegs: vegs_result };
-
                     res.render("en/order", 
                     {title: "OrderEN",
                     noodles: noodles_result,
@@ -153,11 +151,11 @@ router.get("/order", (req, res, next) => {
 });
 
 router.get('/order/cart', function(req, res, next) {
-    /*res.render("en/cart",
-                    {title: "CartEN"
-                    //noodles: req.session.item
-    });*/
-    res.send(req.session.item);
+    const items = req.session.item || [];
+    res.render("en/cart",
+                {title: "CartEN",
+                items: items
+    });
 });
 
 module.exports = router;

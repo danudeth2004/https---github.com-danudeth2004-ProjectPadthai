@@ -89,7 +89,7 @@ body {
     font-size: 18px;
 }
 
-.add-to-cart {
+/*.add-to-cart {
     align-items: center;
     position: absolute;
     right: 2%;
@@ -114,13 +114,77 @@ body {
     border: none;
     box-shadow: 0 0 2px #4D9941,
     0 0 10px #4D9941,
-    0 0 25px #0F601E,
-    0 0 50px #0F601E;
+    0 0 25px #4D9941,
+    0 0 50px #4D9941;
 }
 .add-to-cart i {
     font-size: 33px;
     padding-top: 10px;
     padding-bottom: 10px;
+}*/
+
+.btn {
+    position: absolute;
+    width: 250px;
+    height: 80px;
+    right: 2%;
+    bottom: 3%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #34974d;
+    background-color: #3aa856;
+}
+  
+.btn, .button__icon, .button__text {
+    transition: all 0.3s;
+}
+
+.button__text p {
+    font-size: 25px;
+}
+  
+.btn .button__text {
+    transform: translateX(35px);
+    color: #fff;
+    font-weight: 600;
+}
+  
+.btn .button__icon {
+    position: absolute;
+    transform: translateX(188px);
+    height: 100%;
+    width: 60px;
+    background-color: #34974d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.btn .svg {
+    width: 50px;
+    stroke: #fff;
+}
+  
+.btn:hover {
+    background: #34974d;
+}
+  
+.btn:hover .button__text {
+    color: transparent;
+}
+  
+.btn:hover .button__icon {
+    width: 250px;
+    transform: translateX(0);
+}
+  
+.btn:active .button__icon {
+    background-color: #2e8644;
+}
+  
+.btn:active {
+    border: 1px solid #2e8644;
 }
 
 table {

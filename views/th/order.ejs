@@ -18,6 +18,7 @@
         <input type="hidden" id="time" name="order_time" value="">
         <input type="hidden" id="tel" name="customer_tel" value="None">
         <input type="hidden" id="id" name="customer_id" value="">
+        <input type="hidden" id="price" name="price" value="">
         <button class="back"><i class='bx bxs-chevron-left' ></i></button>
         <div class="corner">
             <div class="lang">
@@ -30,7 +31,10 @@
             </div>
         </div>
 
-        <button class="add-to-cart" onclick="checkDropdown()" type="submit"><p><i class='bx bx-plus-circle' ></i>  เพิ่มในตะกร้า</p></i></button>
+        <button type="submit" onclick="checkDropdown()" class="btn">
+            <span class="button__text"><p>เพิ่มในตะกร้า</p></span>
+            <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
+        </button>
         <table>
             <tr>
                 <td colspan="2">
@@ -61,7 +65,7 @@
                         <select id="meat" onchange="showImgMeat()" width="90%">
                             <label for="n0"><option value="none" selected class="selected">เลือกประเภทเนื้อสัตว์</option></label>
                         <% for(var i=0; i < meats.length;i++){ %>
-                            <label for="n2"><option value="<%= meats[i].meat_nameTH %>"><%= meats[i].meat_nameTH %></option></label>
+                            <label for="n2"><option value="<%= meats[i].meat_nameTH %>"><%= meats[i].meat_nameTH %> (<%= meats[i].price %> ฿)</option></label>
                         <% } %>
                         </select>
                     </div>
@@ -85,7 +89,11 @@
                     <div class="object4">
                         <div class="content2">
                             <% for(var i=0; i < toppings.length-2;i++){ %>
-                                <p><%= toppings[i].topping_nameTH %></p>
+                                <p><%= toppings[i].topping_nameTH %> 
+                                    <% if(i==1){ %>
+                                        (<%= toppings[i].price %> ฿)
+                                    <% } %>
+                                </p>
                                 <input type="checkbox" id="top<%= i+1 %>" name="topTH" value="<%= toppings[i].topping_nameTH %>"/>
                                 <label for="top<%= i+1 %>">
                                     <img src="../images/order/top<%= i+1 %>.jpg" width="292.5px" height="220px">

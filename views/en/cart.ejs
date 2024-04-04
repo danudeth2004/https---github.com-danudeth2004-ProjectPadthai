@@ -22,13 +22,14 @@
           <div class="col col-6">Unit Price</div>
           <div class="col col-7">Remove</div>
         </li>
+        <% for(var i=0;i < items.length;i++) { %>
         <li class="table-row">
-          <div class="col col-1" data-label="Id">1</div>
-          <div class="col col-2" data-label="Noodles type">Noodles</div>
-          <div class="col col-3" data-label="Meat type">Pork</div>
-          <div class="col col-4" data-label="Topping">Crackling, Bean Crud</div>
-          <div class="col col-5" data-label="Vegetable">Bean sprout, Chieve</div>
-          <div class="col col-6" data-label="Unit Price">100 ฿</div>
+          <div class="col col-1" data-label="Id"><%= i+1 %></div>
+          <div class="col col-2" data-label="Noodles type"><%= items[i]["noodlesEN"] %></div>
+          <div class="col col-3" data-label="Meat type"><%= items[i]["meatEN"] %></div>
+          <div class="col col-4" data-label="Topping"><%= items[i]["topEN"] %></div>
+          <div class="col col-5" data-label="Vegetable"><%= items[i]["vegEN"] %></div>
+          <div class="col col-6" data-label="Unit Price"><%= items[i]["price"] %> ฿</div>
           <div class="col col-7" data-label="Remove">
             <button class="bin-button">
               <svg
@@ -78,6 +79,15 @@
                 ></path>
               </svg>
             </button>
+          </div>
+        </li>
+        <% } %>
+        <li class="table-footer">
+          <div class="col col-8">Total <% var price = 0; %>
+             <%for(var i=0;i < items.length;i++) { %>
+              <% price += parseInt(items[i]["price"]); %>
+            <% } %>
+            <%= price %>
           </div>
         </li>
       </ul>

@@ -8,10 +8,10 @@ router.get('/', function(req, res, next) {
 
 router.get("/order", (req, res, next) => {
 
-  const noodles_query = "SELECT noodles_nameTH FROM noodles_type;";
-  const meat_query = "SELECT meat_nameTH FROM meat_type;";
-  const topping_query = "SELECT topping_nameTH FROM topping_list;";
-  const veg_query = "SELECT veg_nameTH FROM veg_list;";
+  const noodles_query = "SELECT noodles_nameTH,price FROM noodles_type;";
+  const meat_query = "SELECT meat_nameTH,price FROM meat_type;";
+  const topping_query = "SELECT topping_nameTH,price FROM topping_list;";
+  const veg_query = "SELECT veg_nameTH,price FROM veg_list;";
 
   database.query(noodles_query, (err, noodles_result) => {
       if (err) {
@@ -101,6 +101,14 @@ router.post('/order', function (req, res, next) {
             }
         }
     }
+
+    const orderDetails = req.body;
+    if(!req.session.item){
+        req.session.item = [];
+    }
+    req.session.item.push(orderDetails);
+
+    res.redirect('order');
     
     const queryString_detail = 'INSERT INTO order_detail (noodles_nameTH, meat_nameTH, topping_nameTH, veg_nameTH) VALUES (?, ?, ?, ?)';
     database.query(queryString_detail, [noodles_type_tempTH, meat_type_tempTH, topping_tempTH, veg_tempTH],(err, data) => {
@@ -114,7 +122,11 @@ router.post('/order', function (req, res, next) {
 });
 
 router.get('/order/cart', function(req, res, next) {
-  res.render('th/cart', { title: 'CartTH' });
+    const items = req.session.item || [];
+    res.render("th/cart",
+                {title: "CartTH",
+                items: items
+    });
 });
 
 module.exports = router;
