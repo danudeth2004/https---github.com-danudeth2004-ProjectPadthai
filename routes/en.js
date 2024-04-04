@@ -153,11 +153,11 @@ router.get("/order", (req, res, next) => {
 });
 
 router.get('/order/cart', function(req, res, next) {
-    res.render("en/cart",
+    /*res.render("en/cart",
                     {title: "CartEN"
                     //noodles: req.session.item
-    });
-    //res.send(req.session.item);
+    });*/
+    res.send(req.session.item);
 });
 
 module.exports = router;

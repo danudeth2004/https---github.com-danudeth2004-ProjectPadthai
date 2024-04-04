@@ -93,7 +93,23 @@ function checkDropdown(){
     var hours = formatNumber(currentTime.getHours());
     var minutes = formatNumber(currentTime.getMinutes());
     var seconds = formatNumber(currentTime.getSeconds());
-    time.value = hours + ":" + minutes + ":" + seconds;  
+    time.value = hours + ":" + minutes + ":" + seconds;
+
+    var prices = document.getElementById("price");
+    var top_price = document.getElementById("top2");
+
+    if(nn2.value == "Pork" || nn2.value == "หมู"){
+        prices.value = 40;
+        if(top_price.value == "Crackling" || top_price.value == "กากหมู"){
+            prices.value = 45;
+        }
+    }
+    else {
+        prices.value = 50;
+        if(top_price.value == "Crackling" || top_price.value == "กากหมู"){
+            prices.value = 55;
+        }
+    }
 }
 function formatNumber(number) {
     return number < 10 ? '0' + number : number;
