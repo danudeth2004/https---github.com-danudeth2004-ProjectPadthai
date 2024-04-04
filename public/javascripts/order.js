@@ -1,6 +1,9 @@
 function linktocartEN() {
     window.location.href = "/en/order/cart";
 }
+function linktocartTH() {
+    window.location.href = "/th/order/cart";
+}
 function changeTH() {
     window.location.href = "/th/order";
 }

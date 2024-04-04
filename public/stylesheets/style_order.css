@@ -112,7 +112,9 @@ body {
     0 0 50px #0F601E;
 }
 .add-to-cart i {
-    font-size: 28px;
+    font-size: 33px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 table {
