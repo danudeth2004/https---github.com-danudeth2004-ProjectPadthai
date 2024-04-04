@@ -23,7 +23,7 @@
           <div class="col col-1">หมายเลข</div>
           <div class="col col-2">ประเภทเส้น</div>
           <div class="col col-3">ประเภทเนื้อสัตว์</div>
-          <div class="col col-4">ประเภทของโรยหน้า</div>
+          <div class="col col-4">ประเภทโรยหน้า</div>
           <div class="col col-5">ประเภทผัก</div>
           <div class="col col-6">ราคา</div>
           <div class="col col-7">ลบรายการ</div>
@@ -31,10 +31,10 @@
         <% for(var i=0;i < items.length;i++) { %>
         <li class="table-row">
           <div class="col col-1" data-label="Id"><%= i+1 %></div>
-          <div class="col col-2" data-label="Noodles type"><%= items[i]["noodlesEN"] %></div>
-          <div class="col col-3" data-label="Meat type"><%= items[i]["meatEN"] %></div>
-          <div class="col col-4" data-label="Topping"><%= items[i]["topEN"] %></div>
-          <div class="col col-5" data-label="Vegetable"><%= items[i]["vegEN"] %></div>
+          <div class="col col-2" data-label="Noodles type"><%= items[i]["noodlesTH"] %></div>
+          <div class="col col-3" data-label="Meat type"><%= items[i]["meatTH"] %></div>
+          <div class="col col-4" data-label="Topping"><%= items[i]["topTH"] %></div>
+          <div class="col col-5" data-label="Vegetable"><%= items[i]["vegTH"] %></div>
           <div class="col col-6" data-label="Unit Price"><%= items[i]["price"] %> บาท</div>
           <div class="col col-7" data-label="Remove">
             <button class="bin-button">
@@ -99,7 +99,7 @@
       </ul>
     </form>
     <div class="button-footer">
-      <button onclick="backtoorder()" class="add-more-button">เลือกออเดอร์เพิ่มเติม<i class="fa fa-shopping-cart"></i></button>
+      <button onclick="backtoorder()" class="add-more-button">เลือกเมนูเพิ่มเติม<i class="fa fa-shopping-cart"></i></button>
       <button class="submit-button">ยืนยันออเดอร์<i class="fa fa-shopping-cart"></i></button>
     </div>
   </div>

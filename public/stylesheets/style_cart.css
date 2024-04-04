@@ -48,7 +48,7 @@ h1 {
 
     .table-header {
       background-color: #caa892;
-      font-size: 15px;
+      font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 0.03em;
       font-weight: bolder;
@@ -103,7 +103,7 @@ h1 {
     }
 
     .col-7 {
-        flex-basis: 5%;
+        flex-basis: 6%;
     }
     
     .col-8 {
@@ -115,8 +115,6 @@ h1 {
       .table-header {
         display: none;
       }
-  
-      .table-row {}
   
       li {
         display: block;
