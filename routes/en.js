@@ -2,54 +2,6 @@ var express = require('express');
 var router = express.Router();
 var database = require('../database');
 
-router.get("/order", (req, res, next) => {
-
-    const noodles_query = "SELECT noodles_nameEN FROM noodles_type;";
-    const meat_query = "SELECT meat_nameEN FROM meat_type;";
-    const topping_query = "SELECT topping_nameEN FROM topping_list;";
-    const veg_query = "SELECT veg_nameEN FROM veg_list;";
-  
-    database.query(noodles_query, (err, noodles_result) => {
-        if (err) {
-          console.error("Error executing query:", err);
-          res.status(500).send("Error executing query");
-          return;
-        }
-  
-        database.query(meat_query, (err, meats_result) => {
-            if (err) {
-                console.error("Error executing query:", err);
-                res.status(500).send("Error executing query");
-                return;
-            }
-  
-            database.query(topping_query, (err, toppings_result) => {
-                if (err) {
-                    console.error("Error executing query:", err);
-                    res.status(500).send("Error executing query");
-                    return;
-                }
-  
-                database.query(veg_query, (err, vegs_result) => {
-                    if (err) {
-                        console.error("Error executing query:", err);
-                        res.status(500).send("Error executing query");
-                        return;
-                    }
-  
-                    res.render("en/order", 
-                    {title: "OrderEN",
-                    noodles: noodles_result,
-                    meats: meats_result,
-                    toppings: toppings_result,
-                    vegs: vegs_result 
-                    });
-                });
-            });
-        });
-    });
-});
-
 router.post('/order', function (req, res, next) {
     
     /* customer & order_income */
@@ -85,6 +37,7 @@ router.post('/order', function (req, res, next) {
     });*/
 
     /* order_detail */
+    var noodles_type_EN = req.body.noodlesEN;
     var meat_type_EN = req.body.meatEN;
 
     var add_veg_EN = req.body.vegEN;
@@ -141,11 +94,75 @@ router.post('/order', function (req, res, next) {
     else console.log("Query Successfully.");
 
     });
+    
+    const orderDetails = req.body;
+    if(!req.session.item){
+        req.session.item = [];
+    }
+    req.session.item.push(orderDetails);
+
     res.redirect('order');
 });
 
+router.get("/order", (req, res, next) => {
+
+    const noodles_query = "SELECT noodles_nameEN FROM noodles_type;";
+    const meat_query = "SELECT meat_nameEN FROM meat_type;";
+    const topping_query = "SELECT topping_nameEN FROM topping_list;";
+    const veg_query = "SELECT veg_nameEN FROM veg_list;";
+  
+    database.query(noodles_query, (err, noodles_result) => {
+        if (err) {
+          console.error("Error executing query:", err);
+          res.status(500).send("Error executing query");
+          return;
+        }
+  
+        database.query(meat_query, (err, meats_result) => {
+            if (err) {
+                console.error("Error executing query:", err);
+                res.status(500).send("Error executing query");
+                return;
+            }
+  
+            database.query(topping_query, (err, toppings_result) => {
+                if (err) {
+                    console.error("Error executing query:", err);
+                    res.status(500).send("Error executing query");
+                    return;
+                }
+  
+                database.query(veg_query, (err, vegs_result) => {
+                    if (err) {
+                        console.error("Error executing query:", err);
+                        res.status(500).send("Error executing query");
+                        return;
+                    }
+
+                    req.session.orderDetail = { noodles: noodles_result, meats: meats_result, toppings: toppings_result, vegs: vegs_result };
+
+                    res.render("en/order", 
+                    {title: "OrderEN",
+                    noodles: noodles_result,
+                    meats: meats_result,
+                    toppings: toppings_result,
+                    vegs: vegs_result 
+                    });
+                });
+            });
+        });
+    });
+});
+
 router.get('/order/cart', function(req, res, next) {
-    res.render('en/cart', { title: 'CartEN' });
+    /*res.render("en/cart", 
+                    {title: "OrderEN",
+                    noodles: req.session.orderDetail.noodles_result,
+                    meats: req.session.orderDetail.meats_result,
+                    toppings: req.session.orderDetail.toppings_result,
+                    vegs: req.session.orderDetail.vegs_result 
+    });*/
+    res.send(req.session.item);
 });
 
 module.exports = router;

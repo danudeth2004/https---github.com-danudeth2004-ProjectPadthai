@@ -72,7 +72,7 @@
                         <div class="content">
                             <% for(var i=0; i < vegs.length;i++){ %>
                                 <p><%= vegs[i].veg_nameEN %></p>
-                                <input type="checkbox" id="veg<%= i+1 %>" name="vegEN" value="<%= vegs[i].veg_nameEN %>"/>
+                                <input type="checkbox" id="veg<%= i+1 %>" name="vegEN[]" value="<%= vegs[i].veg_nameEN %>"/>
                                 <label for="veg<%= i+1 %>">
                                     <img src="../images/order/veg<%= i+1 %>.jpg" width="600px" height="250px"/>
                                 </label>
@@ -85,7 +85,7 @@
                         <div class="content2">
                             <% for(var i=0; i < toppings.length-2;i++){ %>
                                 <p><%= toppings[i].topping_nameEN %></p>
-                                <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameEN %>"/>
+                                <input type="checkbox" id="top<%= i+1 %>" name="topEN[]" value="<%= toppings[i].topping_nameEN %>"/>
                                 <label for="top<%= i+1 %>">
                                     <img src="../images/order/top<%= i+1 %>.jpg" width="292.5px" height="220px">
                                 </label>
@@ -95,7 +95,7 @@
 
                             <% for(var i=2; i < toppings.length;i++){ %>
                                 <p><%= toppings[i].topping_nameEN %></p>
-                                <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameEN %>"/>
+                                <input type="checkbox" id="top<%= i+1 %>" name="topEN[]" value="<%= toppings[i].topping_nameEN %>"/>
                                 <label for="top<%= i+1 %>">
                                     <img src="../images/order/top<%= i+1 %>.jpg" width="292.5px" height="220px">
                                 </label>
