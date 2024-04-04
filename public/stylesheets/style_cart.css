@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+
 body {
     font-family: 'lato', sans-serif;
     background-image: linear-gradient(rgba(156, 128, 105, 0.4), rgba(156, 128, 105, 0.4)), url(../images/cart/bg_order_income.jpg);
