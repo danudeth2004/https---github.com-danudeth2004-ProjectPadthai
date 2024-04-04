@@ -85,58 +85,56 @@ router.post('/order', function (req, res, next) {
     });*/
 
     /* order_detail */
+    var meat_type_EN = req.body.meatEN;
 
-    var noodles_type_tempEN = req.body.noodlesEN;
-    var meat_type_tempEN = req.body.meatEN;
-
-    var add_veg_tempEN = req.body.vegEN;
-    var veg_tempEN =  "";
+    var add_veg_EN = req.body.vegEN;
+    var veg_EN =  "";
     console.log(req.body.vegEN);
 
-    var add_topping_tempEN = req.body.topEN;
-    var topping_tempEN = "";
+    var add_topping_EN = req.body.topEN;
+    var topping_EN = "";
     console.log(req.body.topEN);
 
-    if(add_veg_tempEN === undefined){
-        veg_tempEN = "None";
+    if(add_veg_EN === undefined){
+        veg_EN = "None";
     }
-    else if(add_veg_tempEN.length>2){
-        for (let i = 0; i < add_veg_tempEN.length; i++) {
-            veg_tempEN += add_veg_tempEN[i];
+    else if(add_veg_EN.length>2){
+        for (let i = 0; i < add_veg_EN.length; i++) {
+            veg_EN += add_veg_EN[i];
         }
     }
     else{
-        for (let i = 0; i < add_veg_tempEN.length; i++) {
-            if(i<add_veg_tempEN.length-1){
-                veg_tempEN += add_veg_tempEN[i]+", ";
+        for (let i = 0; i < add_veg_EN.length; i++) {
+            if(i<add_veg_EN.length-1){
+                veg_EN += add_veg_EN[i]+", ";
             }
             else{
-                veg_tempEN += add_veg_tempEN[i];
+                veg_EN += add_veg_EN[i];
             }
         }
     }
 
-    if(add_topping_tempEN === undefined){
-        topping_tempEN = "None";
+    if(add_topping_EN === undefined){
+        topping_EN = "None";
     }
-    else if(add_topping_tempEN.length>4){
-        for (let i = 0; i < add_veg_tempEN.length; i++) {
-            topping_tempEN += add_topping_tempEN[i];
+    else if(add_topping_EN.length>4){
+        for (let i = 0; i < add_veg_EN.length; i++) {
+            topping_EN += add_topping_EN[i];
         }
     }
     else{
-        for (let i = 0; i < add_topping_tempEN.length; i++) {
-            if(i<add_topping_tempEN.length-1){
-                topping_tempEN += add_topping_tempEN[i]+", ";
+        for (let i = 0; i < add_topping_EN.length; i++) {
+            if(i<add_topping_EN.length-1){
+                topping_EN += add_topping_EN[i]+", ";
             }
             else{
-                topping_tempEN += add_topping_tempEN[i];
+                topping_EN += add_topping_EN[i];
             }
         }
     }
     
     const queryString_detail = 'INSERT INTO order_detail (noodles_nameEN, meat_nameEN, topping_nameEN, veg_nameEN) VALUES (?, ?, ?, ?)';
-    database.query(queryString_detail, [noodles_type_tempEN, meat_type_tempEN, topping_tempEN, veg_tempEN],(err, data) => {
+    database.query(queryString_detail, [noodles_type_EN, meat_type_EN, topping_EN, veg_EN],(err, data) => {
     if(err){
         console.error(err);
     }
