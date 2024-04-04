@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var database = require('../database');
 
-router.post('/order', function (req, res, next) {
+router.post('/order', function (req, res) {
     
     /* customer & order_income */
     /*var tel_temp = req.body.customer_tel;
@@ -42,11 +42,9 @@ router.post('/order', function (req, res, next) {
 
     var add_veg_EN = req.body.vegEN;
     var veg_EN =  "";
-    console.log(req.body.vegEN);
 
     var add_topping_EN = req.body.topEN;
     var topping_EN = "";
-    console.log(req.body.topEN);
 
     if(add_veg_EN === undefined){
         veg_EN = "None";

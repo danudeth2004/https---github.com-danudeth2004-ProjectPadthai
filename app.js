@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 
 var homeRouter = require('./routes/home');
 var enRouter = require('./routes/en');
@@ -26,6 +27,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', homeRouter);
 app.use('/en', enRouter);
