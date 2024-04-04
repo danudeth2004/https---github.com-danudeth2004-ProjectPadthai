@@ -1,0 +1,210 @@
+body {
+    font-family: 'lato', sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(156, 128, 105, 0.4), rgba(156, 128, 105, 0.4)), url(bg_order_income.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.container {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+h1 {
+    font-size: 60px;
+    margin: 30px 0;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 5px 5px #000000;
+    margin-bottom: 4%;
+    letter-spacing: 10px;
+}
+
+.responsive-table {
+    li {
+        border-radius: 3px;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .table-header {
+        background-color: #B5A499;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    .table-row {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+        align-items: center;
+    }
+
+    .col-1 {
+        flex-basis: 7%;
+    }
+
+    .col-2 {
+        flex-basis: 2%;
+    }
+
+    .col-3 {
+        flex-basis: 13%;
+    }
+
+    .col-4 {
+        flex-basis: 7%;
+    }
+
+    .col-5 {
+        flex-basis: 30%;
+    }
+
+    .col-6 {
+        flex-basis: 20%;
+    }
+
+    .col-7 {
+        flex-basis: 5%;
+    }
+
+    @media all and (max-width: 767px) {
+        .table-header {
+            display: none;
+        }
+
+        .table-row {}
+
+        li {
+            display: block;
+        }
+
+        .col {
+
+            flex-basis: 100%;
+
+        }
+
+        .col {
+            display: flex;
+            padding: 10px 0;
+
+            &:before {
+                color: #C4A998;
+                padding-right: 10px;
+                content: attr(data-label);
+                flex-basis: 50%;
+                text-align: right;
+            }
+        }
+    }
+
+    .edit:hover {
+        color: #0a79df;
+      }
+      
+      .delete:hover {
+        color: #dc2a2a;
+      }
+
+    /* button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 38px;
+        border-radius: 16px;
+        border: 1px solid transparent;
+        color: #FFFFFF;
+        background-color: #C4A998;
+        font-size: 16px;
+        letter-spacing: 1px;
+        transition: all 0.15s linear;
+    }
+
+    button:hover {
+        background-color: rgba(29, 201, 160, 0.08);
+        border-color: #C4A998;
+        color: #C4A998;
+        transform: translateY(-5px) scale(1.05);
+    }
+
+    button:active {
+        background-color: transparent;
+        border-color: #C4A998;
+        color: #C4A998;
+        transform: translateY(5px) scale(0.95);
+    }
+
+    button:disabled {
+        background-color: rgba(255, 255, 255, 0.16);
+        color: #8E8E93;
+        border-color: #8E8E93;
+    } */
+    .bin-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgb(255, 95, 95);
+        cursor: pointer;
+        border: 2px solid rgb(255, 201, 201);
+        transition-duration: 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .bin-bottom {
+        width: 13px;
+        z-index: 2;
+      }
+      .bin-top {
+        width: 13px;
+        transform-origin: right;
+        transition-duration: 0.3s;
+        z-index: 2;
+      }
+      .bin-button:hover .bin-top {
+        transform: rotate(45deg);
+      }
+      .bin-button:hover {
+        background-color: rgb(255, 0, 0);
+      }
+      .bin-button:active {
+        transform: scale(0.9);
+      }
+      .garbage {
+        position: absolute;
+        width: 13px;
+        height: auto;
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.3s;
+      }
+      .bin-button:hover .garbage {
+        animation: throw 0.4s linear;
+      }
+      @keyframes throw {
+        from {
+          transform: translate(-400%, -700%);
+          opacity: 0;
+        }
+        to {
+          transform: translate(0%, 0%);
+          opacity: 1;
+        }
+      }
+      
+}
