@@ -53,24 +53,24 @@
 button {
     position: relative;
     padding: 15px 45px;
-    background: #fec195;
+    background: #caa892;
     font-size: 35px;
     font-weight: 800;
     color: #181818;
     cursor: pointer;
-    border: 1px solid #fec195;
+    border: 1px solid #caa892;
     border-radius: 10px;
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2));
 }
 
 button:hover {
-    border: 1px solid #f3b182;
+    border: 1px solid #caa892;
     background: linear-gradient(85deg,
-            #fec195,
-            #fcc196,
-            #fabd92,
-            #fac097,
-            #fac39c);
+            #caa892,
+            #caa892,
+            #caa892,
+            #caa892,
+            #caa892);
     animation: wind 2s ease-in-out infinite;
 }
 

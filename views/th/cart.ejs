@@ -2,16 +2,107 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ตะกร้าของคุณ</title>
-    <link rel="stylesheet" href="/stylesheets/style_cart.css" type="text/css" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ตะกร้าของคุณ</title>
+  <link rel="stylesheet" href="/stylesheets/style_cart.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Gilda+Display&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Protest+Strike&family=Rowdies&family=Shippori+Mincho&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-    CartTH
-    <button onclick="backtoorder()">Back to Order</button>
+  <div class="container">
+    <form method="post">
+      <h1>ตะกร้าของคุณ</h1>
+      <ul class="responsive-table">
+        <li class="table-header">
+          <div class="col col-1">หมายเลข</div>
+          <div class="col col-2">ประเภทเส้น</div>
+          <div class="col col-3">ประเภทเนื้อสัตว์</div>
+          <div class="col col-4">ประเภทของโรยหน้า</div>
+          <div class="col col-5">ประเภทผัก</div>
+          <div class="col col-6">ราคา</div>
+          <div class="col col-7">ลบรายการ</div>
+        </li>
+        <% for(var i=0;i < items.length;i++) { %>
+        <li class="table-row">
+          <div class="col col-1" data-label="Id"><%= i+1 %></div>
+          <div class="col col-2" data-label="Noodles type"><%= items[i]["noodlesEN"] %></div>
+          <div class="col col-3" data-label="Meat type"><%= items[i]["meatEN"] %></div>
+          <div class="col col-4" data-label="Topping"><%= items[i]["topEN"] %></div>
+          <div class="col col-5" data-label="Vegetable"><%= items[i]["vegEN"] %></div>
+          <div class="col col-6" data-label="Unit Price"><%= items[i]["price"] %> บาท</div>
+          <div class="col col-7" data-label="Remove">
+            <button class="bin-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 39 7"
+                class="bin-top"
+              >
+                <line stroke-width="4" stroke="white" y2="5" x2="39" y1="5"></line>
+                <line
+                  stroke-width="3"
+                  stroke="white"
+                  y2="1.5"
+                  x2="26.0357"
+                  y1="1.5"
+                  x1="12"
+                ></line>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 33 39"
+                class="bin-bottom"
+              >
+                <mask fill="white" id="path-1-inside-1_8_19">
+                  <path
+                    d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"
+                  ></path>
+                </mask>
+                <path
+                  mask="url(#path-1-inside-1_8_19)"
+                  fill="white"
+                  d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                ></path>
+                <path stroke-width="4" stroke="white" d="M12 6L12 29"></path>
+                <path stroke-width="4" stroke="white" d="M21 6V29"></path>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 89 80"
+                class="garbage"
+              >
+                <path
+                  fill="white"
+                  d="M20.5 10.5L37.5 15.5L42.5 11.5L51.5 12.5L68.75 0L72 11.5L79.5 12.5H88.5L87 22L68.75 31.5L75.5066 25L86 26L87 35.5L77.5 48L70.5 49.5L80 50L77.5 71.5L63.5 58.5L53.5 68.5L65.5 70.5L45.5 73L35.5 79.5L28 67L16 63L12 51.5L0 48L16 25L22.5 17L20.5 10.5Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </li>
+        <% } %>
+        <li class="table-footer">
+          <div class="col col-8">ราคารวม &nbsp;&nbsp;<% var price = 0; %>
+             <%for(var i=0;i < items.length;i++) { %>
+              <% price += parseInt(items[i]["price"]); %>
+            <% } %>
+            <%= price + " บาท" %>
+          </div>
+        </li>
+      </ul>
+    </form>
+    <div class="button-footer">
+      <button onclick="backtoorder()" class="add-more-button">เลือกออเดอร์เพิ่มเติม<i class="fa fa-shopping-cart"></i></button>
+      <button class="submit-button">ยืนยันออเดอร์<i class="fa fa-shopping-cart"></i></button>
+    </div>
+  </div>
 </body>
 <script src="/javascripts/cart.js"></script>
 </html>
