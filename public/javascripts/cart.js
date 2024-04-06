@@ -4,6 +4,12 @@ function backtoorderEN(){
 function backtoorderTH(){
     window.location.href = "/th/order";
 }
+function linktoendEN(){
+    window.location.href = "/en/order/cart/end";
+}
+function linktoendTH(){
+    window.location.href = "/th/order/cart/end";
+}
 
 function activePopup(){
     const showPopup = document.querySelector('.submit-button');

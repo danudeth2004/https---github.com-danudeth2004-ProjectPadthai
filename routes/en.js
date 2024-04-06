@@ -174,4 +174,13 @@ router.post('/order/cart', function(req, res, next) {
     res.redirect('cart');
 });
 
+router.get('/order/cart/end', function(req, res, next) {
+    const items = req.session.item || [];
+    res.render("en/end",
+                {title: "EndEN",
+                items: items
+    });
+    //res.send(items);
+});
+
 module.exports = router;

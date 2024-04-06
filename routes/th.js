@@ -129,4 +129,28 @@ router.get('/order/cart', function(req, res, next) {
     });
 });
 
+router.post('/order/cart', function(req, res, next) {
+    var indexId = parseInt(req.body.indexId);
+
+    if (!Array.isArray(req.session.item)) {
+        req.session.item = [];
+    }
+    if (indexId < req.session.item.length) {
+        req.session.item.splice(indexId, 1);
+    } else {
+        console.log(indexId);
+    }
+
+    res.redirect('cart');
+});
+
+router.get('/order/cart/end', function(req, res, next) {
+    const items = req.session.item || [];
+    res.render("th/end",
+                {title: "EndEN",
+                items: items
+    });
+    //res.send(items);
+});
+
 module.exports = router;
