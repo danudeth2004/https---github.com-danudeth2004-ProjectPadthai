@@ -17,6 +17,11 @@ function activePopup(){
     }
 }
 
-function deleteItem(){
-    req.session.item = req.session.item.filter((item, index) => index !== 0);
-}
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('bin-button')) {
+        var thisindex = document.getElementById('indexId')
+        var buttonId = event.target.id;
+        var index = parseInt(buttonId.split('_')[1]);
+        thisindex.value = index;
+      }
+});

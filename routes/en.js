@@ -160,8 +160,17 @@ router.get('/order/cart', function(req, res, next) {
 });
 
 router.post('/order/cart', function(req, res, next) {
-    req.session.item = req.session.item.filter((item, index) => index !== 0);//เลขตัวหลังไว้กำหนด index
-    res.redirect('cart');
+    //const items = req.session.item || []; //temp
+
+    const thisIndex = document.getElementById("indexId");
+
+    req.session.item = req.session.item.filter((item, index) => index !== thisIndex.value);//เลขตัวหลังไว้กำหนด index
+    
+    /*res.render("en/end",
+                {title: "endEN",
+                items: items
+    });
+    res.redirect('cart');*/
     //post session ไปที่ หน้าขอบคุณ พอกดกลับหน้าหลักจะ ยัดทุกอย่างเข้าไปที่ Submit order
 });
 

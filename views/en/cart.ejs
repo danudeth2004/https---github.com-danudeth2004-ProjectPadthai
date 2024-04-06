@@ -29,7 +29,7 @@
           <div class="col col-7">Remove</div>
         </li>
         <% for(var i=0;i < items.length;i++) { %>
-        <li class="table-row">
+        <li class="table-row" data-index="<%= i %>">
           <div class="col col-1" data-label="Id"><%= i+1 %></div>
           <div class="col col-2" data-label="Noodles type"><%= items[i]["noodlesEN"] %></div>
           <div class="col col-3" data-label="Meat type"><%= items[i]["meatEN"] %></div>
@@ -38,7 +38,8 @@
           <div class="col col-6" data-label="Unit Price"><%= items[i]["price"] %> ฿</div>
           <div class="col col-7" data-label="Remove">
           <form method="post">
-            <button class="bin-button">
+            <input type="hidden" id="indexId" name="indexId" value="">
+            <button id="_<%= i %>" class="bin-button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -108,20 +109,18 @@
       </div>
   </div>
   <div class="container2">
-    <!-- <form method="post"> -->
-      <div class="popup-container">
-        <div class="popup-box">
-          <img src="/images/cart/QR.png" alt="QR Payment" width="200px" height="200px">
-          <p><br>Scan for pay to our restaurant<br>Thank you for order!<br><br></p>
-          <h2>Total Price &nbsp;&nbsp;<%= price + " ฿" %></h2>
-          <br>
-          <button class="Btn">
-              Pay here
-              <svg class="svgIcon" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
-          </button>
-        </div>
+    <div class="popup-container">
+      <div class="popup-box">
+        <img src="/images/cart/QR.png" alt="QR Payment" width="200px" height="200px">
+        <p><br>Scan for pay to our restaurant<br>Thank you for order!<br><br></p>
+        <h2>Total Price &nbsp;&nbsp;<%= price + " ฿" %></h2>
+        <br>
+        <button type="submit" class="Btn">
+            Pay here
+            <svg class="svgIcon" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
+        </button>
       </div>
-    <!-- </form> -->
+    </div>
   </div>
 </body>
 <script src="/javascripts/cart.js"></script>
