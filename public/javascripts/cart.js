@@ -33,7 +33,4 @@ document.addEventListener('click', function(event) {
         console.log(thisIndex.value);
       }
     }
-    /*event.preventDefault();
-    var listItem = event.target.closest('.table-row');
-    listItem.parentNode.removeChild(listItem)*/
 });
