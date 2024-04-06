@@ -69,7 +69,7 @@ router.post('/order', function (req, res) {
         topping_EN = "None";
     }
     else if(add_topping_EN.length>4){
-        for (let i = 0; i < add_veg_EN.length; i++) {
+        for (let i = 0; i < add_topping_EN.length; i++) {
             topping_EN += add_topping_EN[i];
         }
     }
@@ -160,18 +160,18 @@ router.get('/order/cart', function(req, res, next) {
 });
 
 router.post('/order/cart', function(req, res, next) {
-    //const items = req.session.item || []; //temp
+    var indexId = parseInt(req.body.indexId);
 
-    const thisIndex = document.getElementById("indexId");
+    if (!Array.isArray(req.session.item)) {
+        req.session.item = [];
+    }
+    if (indexId < req.session.item.length) {
+        req.session.item.splice(indexId, 1);
+    } else {
+        console.log(indexId);
+    }
 
-    req.session.item = req.session.item.filter((item, index) => index !== thisIndex.value);//เลขตัวหลังไว้กำหนด index
-    
-    /*res.render("en/end",
-                {title: "endEN",
-                items: items
-    });
-    res.redirect('cart');*/
-    //post session ไปที่ หน้าขอบคุณ พอกดกลับหน้าหลักจะ ยัดทุกอย่างเข้าไปที่ Submit order
+    res.redirect('cart');
 });
 
 module.exports = router;

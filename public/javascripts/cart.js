@@ -18,10 +18,16 @@ function activePopup(){
 }
 
 document.addEventListener('click', function(event) {
+    var thisIndex = document.getElementById("indexIdd");
     if (event.target.classList.contains('bin-button')) {
-        var thisindex = document.getElementById('indexId')
-        var buttonId = event.target.id;
-        var index = parseInt(buttonId.split('_')[1]);
-        thisindex.value = index;
+      var listItem = event.target.closest('.table-row');
+      if (listItem) {
+        var index = listItem.getAttribute('data-index');
+        thisIndex.value =  index;
+        console.log(thisIndex.value);
       }
+    }
+    /*event.preventDefault();
+    var listItem = event.target.closest('.table-row');
+    listItem.parentNode.removeChild(listItem)*/
 });
