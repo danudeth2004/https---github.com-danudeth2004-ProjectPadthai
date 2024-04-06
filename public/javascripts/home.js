@@ -1,3 +1,3 @@
 function linktoorderEN() {
-    window.location.href = "/th/order";
+    window.location.href = "/en/order";
 }

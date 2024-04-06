@@ -100,13 +100,13 @@ function checkDropdown(){
 
     if(nn2.value == "Pork" || nn2.value == "หมู"){
         prices.value = 40;
-        if(top_price.value == "Crackling" || top_price.value == "กากหมู"){
+        if(top_price.checked == true){
             prices.value = 45;
         }
     }
     else if(nn2.value == "Prawn" || nn2.value == "กุ้ง"){
         prices.value = 50;
-        if(top_price.value == "Crackling" || top_price.value == "กากหมู"){
+        if(top_price.checked == true){
             prices.value = 55;
         }
     }

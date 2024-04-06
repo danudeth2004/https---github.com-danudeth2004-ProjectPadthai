@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ตะกร้าของคุณ</title>
   <link rel="stylesheet" href="/stylesheets/style_cart.css" type="text/css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,6 @@
 
 <body>
   <div class="container">
-    <form method="post">
       <h1>ตะกร้าของคุณ</h1>
       <ul class="responsive-table">
         <li class="table-header">
@@ -89,7 +89,7 @@
         </li>
         <% } %>
         <li class="table-footer">
-          <div class="col col-8">ราคารวม &nbsp;&nbsp;<% var price = 0; %>
+          <div class="col col-8">รวมทั้งสิ้น &nbsp;&nbsp;<% var price = 0; %>
              <%for(var i=0;i < items.length;i++) { %>
               <% price += parseInt(items[i]["price"]); %>
             <% } %>
@@ -97,11 +97,26 @@
           </div>
         </li>
       </ul>
-    </form>
     <div class="button-footer">
-      <button onclick="backtoorder()" class="add-more-button">เลือกเมนูเพิ่มเติม<i class="fa fa-shopping-cart"></i></button>
-      <button class="submit-button">ยืนยันออเดอร์<i class="fa fa-shopping-cart"></i></button>
+      <button onclick="backtoorderTH()" class="add-more-button">เลือกเมนูเพิ่มเติม <i class='bx bxs-cart-add' ></i></button>
+      <button onclick="activePopup()" class="submit-button">ยืนยันออเดอร์ <i class='bx bxs-dollar-circle'></i></button>
     </div>
+  </div>
+  <div class="container2">
+    <form method="post">
+      <div class="popup-container">
+        <div class="popup-box">
+          <img src="/images/cart/QR.png" alt="QR Payment" width="200px" height="200px">
+          <p><br>แสกนนี้สำหรับจ่ายออเดอร์ของคุณ<br>ขอบคุณที่อุดหนุนครับ/ค่ะ<br><br></p>
+          <h2>รวมทั้งสิ้น &nbsp;&nbsp;<%= price + " ฿" %></h2>
+          <br>
+          <button class="Btn">
+            จ่ายได้ที่นี่
+            <svg class="svgIcon" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
+          </button>     
+        </div>
+      </div>
+    </form>
   </div>
 </body>
 <script src="/javascripts/cart.js"></script>

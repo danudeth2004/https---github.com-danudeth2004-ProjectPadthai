@@ -156,6 +156,13 @@ router.get('/order/cart', function(req, res, next) {
                 {title: "CartEN",
                 items: items
     });
+    //res.send(items);
+});
+
+router.post('/order/cart', function(req, res, next) {
+    req.session.item = req.session.item.filter((item, index) => index !== 0);//เลขตัวหลังไว้กำหนด index
+    res.redirect('cart');
+    //post session ไปที่ หน้าขอบคุณ พอกดกลับหน้าหลักจะ ยัดทุกอย่างเข้าไปที่ Submit order
 });
 
 module.exports = router;
