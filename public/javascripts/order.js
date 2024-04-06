@@ -104,11 +104,14 @@ function checkDropdown(){
             prices.value = 45;
         }
     }
-    else {
+    else if(nn2.value == "Prawn" || nn2.value == "กุ้ง"){
         prices.value = 50;
         if(top_price.value == "Crackling" || top_price.value == "กากหมู"){
             prices.value = 55;
         }
+    }
+    else {
+        prices.value = 0;
     }
 }
 function formatNumber(number) {
