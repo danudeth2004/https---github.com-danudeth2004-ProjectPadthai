@@ -3,96 +3,6 @@ var router = express.Router();
 var database = require('../database');
 
 router.post('/order', function (req, res) {
-    
-    /* customer & order_income */
-    /*var tel_temp = req.body.customer_tel;
-
-    const queryString_cus = 'INSERT INTO customer (customer_tel) VALUES (?)'
-    database.query(queryString_cus, [tel_temp], (err, data) => {
-        if (err) {
-            console.error(err);
-        }
-        else console.log("Query Customer Incoming Successfully.");
-    });
-    
-    const queryString_customer_id = 'SELECT customer_id FROM customer ORDER BY customer_id DESC LIMIT 1';
-
-    database.query(queryString_customer_id, function (err, cus_id_data) {
-        if (err) {
-            console.error(err);
-        }
-        else {
-            var order_date_temp = req.body.order_date;
-            var order_time_temp = req.body.order_time;
-            var values = cus_id_data.map(item => [item.customer_id]);
-
-            const queryString_income = 'INSERT INTO order_income (order_date, order_time, customer_id) VALUES (?,?,?)'
-            database.query(queryString_income, [order_date_temp, order_time_temp, values], (err, data) => {
-                if (err) {
-                    console.error(err);
-                }
-                else console.log("Query Order Incoming Successfully.");
-            });
-        };
-    });*/
-
-    /* order_detail */
-    var noodles_type_EN = req.body.noodlesEN;
-    var meat_type_EN = req.body.meatEN;
-
-    var add_veg_EN = req.body.vegEN;
-    var veg_EN =  "";
-
-    var add_topping_EN = req.body.topEN;
-    var topping_EN = "";
-
-    if(add_veg_EN === undefined){
-        veg_EN = "None";
-    }
-    else if(add_veg_EN.length>2){
-        for (let i = 0; i < add_veg_EN.length; i++) {
-            veg_EN += add_veg_EN[i];
-        }
-    }
-    else{
-        for (let i = 0; i < add_veg_EN.length; i++) {
-            if(i<add_veg_EN.length-1){
-                veg_EN += add_veg_EN[i]+", ";
-            }
-            else{
-                veg_EN += add_veg_EN[i];
-            }
-        }
-    }
-
-    if(add_topping_EN === undefined){
-        topping_EN = "None";
-    }
-    else if(add_topping_EN.length>4){
-        for (let i = 0; i < add_topping_EN.length; i++) {
-            topping_EN += add_topping_EN[i];
-        }
-    }
-    else{
-        for (let i = 0; i < add_topping_EN.length; i++) {
-            if(i<add_topping_EN.length-1){
-                topping_EN += add_topping_EN[i]+", ";
-            }
-            else{
-                topping_EN += add_topping_EN[i];
-            }
-        }
-    }
-    
-    const queryString_detail = 'INSERT INTO order_detail (noodles_nameEN, meat_nameEN, topping_nameEN, veg_nameEN) VALUES (?, ?, ?, ?)';
-    database.query(queryString_detail, [noodles_type_EN, meat_type_EN, topping_EN, veg_EN],(err, data) => {
-    if(err){
-        console.error(err);
-    }
-    else console.log("Query Successfully.");
-
-    });
-    
     const orderDetails = req.body;
     if(!req.session.item){
         req.session.item = [];
@@ -181,6 +91,160 @@ router.get('/order/cart/end', function(req, res, next) {
                 items: items
     });
     //res.send(items);
+});
+
+router.post('/order/cart/end', function(req, res, next) {
+    const items = req.session.item || [];
+
+    /* Order_detail */
+    for(var i = 0; i < req.session.item.length; i++){
+        var noodles_type_EN = items[i]["noodlesEN"];
+        var meat_type_EN = items[i]["meatEN"];
+    
+        var add_veg_EN = items[i]["vegEN"];
+        var veg_EN =  "";
+    
+        var add_topping_EN = items[i]["topEN"];
+        var topping_EN = "";
+    
+        if(add_veg_EN === undefined){
+            veg_EN = "None";
+        }
+        else if(add_veg_EN.length>2){
+            for (let i = 0; i < add_veg_EN.length; i++) {
+                veg_EN += add_veg_EN[i];
+            }
+        }
+        else{
+            for (let i = 0; i < add_veg_EN.length; i++) {
+                if(i<add_veg_EN.length-1){
+                    veg_EN += add_veg_EN[i]+", ";
+                }
+                else{
+                    veg_EN += add_veg_EN[i];
+                }
+            }
+        }
+    
+        if(add_topping_EN === undefined){
+            topping_EN = "None";
+        }
+        else if(add_topping_EN.length>4){
+            for (let i = 0; i < add_topping_EN.length; i++) {
+                topping_EN += add_topping_EN[i];
+            }
+        }
+        else{
+            for (let i = 0; i < add_topping_EN.length; i++) {
+                if(i<add_topping_EN.length-1){
+                    topping_EN += add_topping_EN[i]+", ";
+                }
+                else{
+                    topping_EN += add_topping_EN[i];
+                }
+            }
+        }
+        
+        const queryString_detail = 'INSERT INTO order_detail (noodles_nameEN, meat_nameEN, topping_nameEN, veg_nameEN) VALUES (?, ?, ?, ?)';
+        database.query(queryString_detail, [noodles_type_EN, meat_type_EN, topping_EN, veg_EN],(err, data) => {
+        if(err){
+            console.error(err);
+        }
+        else console.log("Query Successfully.");
+    
+        });
+    }
+
+    /* Customer & Order_income */
+    var tel = req.body.customer_tel;
+    const queryString_cus = 'INSERT INTO customer (customer_tel) VALUES (?)'
+    database.query(queryString_cus, [tel], (err, data) => {
+        if (err) {
+            console.error(err);
+        }
+        else console.log("Query Customer Incoming Successfully.");
+    });
+
+    const queryString_customer_id = 'SELECT customer_id FROM customer ORDER BY customer_id DESC LIMIT 1';
+
+    database.query(queryString_customer_id, function (err, cus_id_data) {
+        if (err) {
+            console.error(err);
+        }
+        else {
+            var order_date = items[req.session.item.length-1]["order_date"];
+            var order_time = items[req.session.item.length-1]["order_time"];
+            var values = cus_id_data.map(item => [item.customer_id]);
+
+            const queryString_income = 'INSERT INTO order_income (order_id, order_date, order_time, customer_id) VALUES (?,?,?,?)'
+            database.query(queryString_income, [values, order_date, order_time, values], (err, data) => {
+                if (err) {
+                    console.error(err);
+                }
+                else console.log("Query Order Incoming Successfully.");
+            });
+        };
+    });
+
+    /* Payment */
+    const queryString_order_id = 'SELECT order_id FROM order_income ORDER BY order_id DESC LIMIT 1';
+    database.query(queryString_order_id, function (err, order_id_data) {
+        if (err) {
+            console.error(err);
+        }
+        else {
+            var total_price = 0
+            for(var i = 0; i < req.session.item.length; i++){
+                if((items[i]["price"]) == null){
+                    items[i]["price"] = 0;
+                }
+                total_price += parseInt(items[i]["price"]);
+            }
+
+            var values = order_id_data.map(item => [item.order_id]);
+
+            const queryString_payment = 'INSERT INTO payment (total_price, order_id) VALUES (?,?)';
+            database.query(queryString_payment, [total_price, values], (err, data) => {
+                if (err) {
+                    console.error(err);
+                }
+                else console.log("Query Payment Successfully.");
+            });
+        };
+    });
+
+    /* Submit_order */
+    for(var i = req.session.item.length-1; i >= 0; i--) {
+        const queryString_detailid = 'SELECT MAX(detail_id)-? AS detail_id FROM order_detail';
+        database.query(queryString_detailid, [i], (err, detail_id_data) => {
+            if (err) {
+                console.error(err);
+            }
+            else {
+
+                var values_detailid = detail_id_data.map(item => [item.detail_id]);
+
+                const queryString_order_id = 'SELECT order_id FROM order_income ORDER BY order_id DESC LIMIT 1';
+                database.query(queryString_order_id, function (err, order_id_data) {
+                    if (err) {
+                        console.error(err);
+                    }
+                    else {
+                        var values = order_id_data.map(item => [item.order_id]);
+            
+                        const queryString_payment = 'INSERT INTO submit_order (order_id, Detail_id,customer_id) VALUES (?,?,?)';
+                        database.query(queryString_payment, [values, values_detailid, values], (err, data) => {
+                            if (err) {
+                                console.error(err);
+                            }
+                            else console.log("Query Payment Successfully.");
+                        });
+                    };
+                });
+            };
+        });
+    }
+    res.redirect('end');
 });
 
 module.exports = router;
