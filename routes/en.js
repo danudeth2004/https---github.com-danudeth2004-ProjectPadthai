@@ -2,16 +2,6 @@ var express = require('express');
 var router = express.Router();
 var database = require('../database');
 
-router.post('/order', function (req, res) {
-    const orderDetails = req.body;
-    if(!req.session.item){
-        req.session.item = [];
-    }
-    req.session.item.push(orderDetails);
-
-    res.redirect('order');
-});
-
 router.get("/order", (req, res, next) => {
 
     const noodles_query = "SELECT noodles_nameEN,price FROM noodles_type;";
@@ -58,6 +48,16 @@ router.get("/order", (req, res, next) => {
             });
         });
     });
+});
+
+router.post('/order', function (req, res) {
+    const orderDetails = req.body;
+    if(!req.session.item){
+        req.session.item = [];
+    }
+    req.session.item.push(orderDetails);
+
+    res.redirect('order');
 });
 
 router.get('/order/cart', function(req, res, next) {
@@ -108,7 +108,7 @@ router.post('/order/cart/end', function(req, res, next) {
         var topping_EN = "";
     
         if(add_veg_EN === undefined){
-            veg_EN = "None";
+            veg_EN += "-";
         }
         else if(add_veg_EN.length>2){
             for (let i = 0; i < add_veg_EN.length; i++) {
@@ -127,7 +127,7 @@ router.post('/order/cart/end', function(req, res, next) {
         }
     
         if(add_topping_EN === undefined){
-            topping_EN = "None";
+            topping_EN += "-";
         }
         else if(add_topping_EN.length>4){
             for (let i = 0; i < add_topping_EN.length; i++) {
@@ -187,7 +187,7 @@ router.post('/order/cart/end', function(req, res, next) {
     });
 
     /* Payment */
-    const queryString_order_id = 'SELECT order_id FROM order_income ORDER BY order_id DESC LIMIT 1';
+    const queryString_order_id = 'SELECT customer_id FROM customer ORDER BY customer_id DESC LIMIT 1';
     database.query(queryString_order_id, function (err, order_id_data) {
         if (err) {
             console.error(err);
@@ -201,7 +201,7 @@ router.post('/order/cart/end', function(req, res, next) {
                 total_price += parseInt(items[i]["price"]);
             }
 
-            var values = order_id_data.map(item => [item.order_id]);
+            var values = order_id_data.map(item => [item.customer_id]);
 
             const queryString_payment = 'INSERT INTO payment (total_price, order_id) VALUES (?,?)';
             database.query(queryString_payment, [total_price, values], (err, data) => {
@@ -237,7 +237,7 @@ router.post('/order/cart/end', function(req, res, next) {
                             if (err) {
                                 console.error(err);
                             }
-                            else console.log("Query Payment Successfully.");
+                            else console.log("Query Submit Successfully.");
                         });
                     };
                 });
