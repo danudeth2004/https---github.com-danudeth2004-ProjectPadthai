@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="login-box">
-        <center><h1>Your Queue: <%= customer_id %></h1></center>
+        <center><h1>Order Number: <%= customer_id %></h1></center>
         <div class="calculator">
             <input type="text" id="phoneInput" placeholder="Enter Phone Number" readonly>
             <div class="user-box">
@@ -36,9 +36,9 @@
             <input type="hidden" id="tel" name="customer_tel" value="None">
             <center>
                 <button type="submit" class="no-phone-button">
-                    <span class="button-content" onclick="backNow()"><p>Anonymous</p></span>
+                    <span class="button-content"><p>Anonymous</p></span>
                 </button>
-                <button type="submit" class="add-phone-button" onclick="backNow()">
+                <button type="submit" class="add-phone-button">
                     <span class="button-content"><p>Add Phone Number</p></span>
                 </button>
             </center>
