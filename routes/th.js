@@ -87,15 +87,6 @@ router.post('/order/cart', function(req, res, next) {
     res.redirect('cart');
 });
 
-router.get('/order/cart/end', function(req, res, next) {
-    const items = req.session.item || [];
-    res.render("en/end",
-                {title: "EndTH",
-                items: items
-    });
-    //res.send(items);
-});
-
 router.post('/order/cart/end', function(req, res, next) {
     const items = req.session.item || [];
 
@@ -206,8 +197,8 @@ router.post('/order/cart/end', function(req, res, next) {
 
             var values = order_id_data.map(item => [item.customer_id]);
 
-            const queryString_payment = 'INSERT INTO payment (total_price, order_id) VALUES (?,?)';
-            database.query(queryString_payment, [total_price, values], (err, data) => {
+            const queryString_payment = 'INSERT INTO payment (total_price, order_id) VALUES (?,?,?)';
+            database.query(queryString_payment, [total_price, values, 0], (err, data) => {
                 if (err) {
                     console.error(err);
                 }
@@ -235,8 +226,8 @@ router.post('/order/cart/end', function(req, res, next) {
                     else {
                         var values = order_id_data.map(item => [item.order_id]);
             
-                        const queryString_payment = 'INSERT INTO submit_order (order_id, Detail_id,customer_id) VALUES (?,?,?)';
-                        database.query(queryString_payment, [values, values_detailid, values], (err, data) => {
+                        const queryString_payment = 'INSERT INTO submit_order (order_id, Detail_id,customer_id) VALUES (?,?,?,?)';
+                        database.query(queryString_payment, [values, values_detailid, values, 0], (err, data) => {
                             if (err) {
                                 console.error(err);
                             }
@@ -247,7 +238,30 @@ router.post('/order/cart/end', function(req, res, next) {
             };
         });
     }
-    res.redirect('end');
+    res.redirect('/');
+});
+
+router.get('/order/cart/end', function(req, res, next) {
+
+    const customer_query = "SELECT customer_id FROM customer ORDER BY customer_id DESC LIMIT 1;";
+  
+    database.query(customer_query, (err, customer_lastest) => {
+        if (err) {
+            console.error(err);
+        }
+        else{
+
+            var customer_id = customer_lastest.map(item => [item.customer_id]);
+
+            const items = req.session.item || [];
+            res.render("th/end",
+                        {title: "EndTH",
+                        items: items,
+                        customer_id: parseInt(customer_id)+1
+            });
+            //res.send(items);
+        }
+    });
 });
 
 module.exports = router;
