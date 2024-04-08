@@ -11,12 +11,14 @@ function linktoendTH(){
     window.location.href = "/th/order/cart/end";
 }
 
-function activePopup(){
-    const showPopup = document.querySelector('.submit-button');
-    const popupContainer = document.querySelector('.popup-container');
-    showPopup.onclick = () => {
-        popupContainer.classList.add('active');
-    }
+const showPopup = document.querySelector('.submit-button');
+const popupContainer = document.querySelector('.popup-container');
+const finishBtn = document.querySelector('.finish-popup-button');
+showPopup.onclick = () => {
+    popupContainer.classList.add('active');
+}
+finishBtn.onclick = () => {
+popupContainer.classList.remove('active');
 }
 
 document.addEventListener('click', function(event) {

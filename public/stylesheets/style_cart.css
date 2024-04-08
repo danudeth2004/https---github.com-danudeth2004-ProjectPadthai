@@ -25,9 +25,6 @@ body {
     padding-left: 10px;
     padding-right: 10px;
 }
-.container2 {
-  width: 100%;
-}
 
 h1 {
     font-size: 60px;
@@ -353,6 +350,8 @@ h1 {
     position: relative;
     overflow: hidden;
     transition-duration: .3s;
+    left: 50%;
+    transform: translate(-50%,-20%);
   }
   
   .svgIcon {

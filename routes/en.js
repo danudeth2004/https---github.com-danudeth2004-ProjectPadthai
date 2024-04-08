@@ -238,6 +238,15 @@ router.post('/order/cart/end', function(req, res, next) {
                                 console.error(err);
                             }
                             else console.log("Query Submit Successfully.");
+                            
+                            /* End Session */
+                            req.session.destroy(function(err) {
+                                if (err) {
+                                    console.error('Error destroying session:', err);
+                                } else {
+                                    console.log('Session destroyed successfully');
+                                }
+                            });
                         });
                     };
                 });
