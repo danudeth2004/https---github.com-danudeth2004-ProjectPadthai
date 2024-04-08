@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style_end.css">
+    <title>Phone</title>
 </head>
 <body>
-    End
-    <form method="post">
-        <input type="hidden" id="tel" name="customer_tel" value="None">
-        <button type="submit">Submit</button>
+    <div class="login-box">
+        <form method="post">
+            <input type="hidden" id="tel" name="customer_tel" value="None">
+            <div class="user-box">
+                <input type="tel" name="phonenumber" required="">
+                <label>Phone number</label>
+            </div>
+            <center>
+                <button type="submit" class="no-phone-button">
+                    <span class="button-content">Anonymous</span>
+                </button>
+                <button type="submit" class="add-phone-button">
+                    <span class="button-content">Add Phone Number</span>
+                </button>
+            </center>
+        </form>
+    </div>
+    <button class="back-home-button">
+        <span class="button-content" onclick="startagain()">Back to Home</span>
+    </button>
     </form>
-    <button onclick="startagain()">Back to start</button>
 </body>
 <script src="/javascripts/end.js"></script>
 </html>
