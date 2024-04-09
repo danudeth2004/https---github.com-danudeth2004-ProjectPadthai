@@ -223,7 +223,7 @@ router.post('/order/cart/end', function(req, res, next) {
                     else {
                         var values = order_id_data.map(item => [item.order_id]);
             
-                        const queryString_payment = 'INSERT INTO submit_order (order_id, Detail_id,customer_id,serve) VALUES (?,?,?,?)';
+                        const queryString_payment = 'INSERT INTO submit_order (order_id, Detail_id, customer_id, serve) VALUES (?,?,?,?)';
                         database.query(queryString_payment, [values, values_detailid, values, 0], (err, data) => {
                             if (err) {
                                 console.error(err);
