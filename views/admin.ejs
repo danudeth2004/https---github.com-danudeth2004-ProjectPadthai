@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Orders Customer</title>
     <link rel="stylesheet" href="/stylesheets/style_admin.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel="stylesheet">
@@ -21,9 +21,25 @@
       <form method="post">
         <h1>Orders Customer</h1>
         <ul class="responsive-table">
-          <% var temp = 1; %>
+          <% var end = 1; %>
           <% for(var i=0;i < price.length;i++) { %>
-            <% if(submit[i].serve === 0) { %>
+            <% if(price[i].status == 0) { %>
+              <% end = 0; %>
+            <% } %>
+          <% } %>
+          <% if(end == 1) { %>
+            <li class="table-header">
+              <div class="col col-1">Order No.</div>
+              <div class="col col-2">Detail no.</div>
+              <div class="col col-3">Noodles type</div>
+              <div class="col col-4">Meat type</div>
+              <div class="col col-5">Topping</div>
+              <div class="col col-6">Vegetable</div>
+            </li>
+          <% } %>
+          <% var temp = min[0].order_min; %>
+          <% for(var i=0;i < price.length;i++) { %>
+            <% if(price[i].status == 0) { %>
               <li class="table-header">
                 <div class="col col-1">Order No.</div>
                 <div class="col col-2">Detail no.</div>
@@ -37,7 +53,7 @@
                 <% if(submit[j].order_id == price[i].order_id) { %>
                   <li class="table-row" data-index="<%= i %>">
                     <div class="col col-1" data-label="Order No.">
-                      <% if(submit[j].order_id==temp) { %>
+                      <% if(submit[j].order_id == temp) { %>
                         <%= submit[j].order_id %>
                         <% temp++; %>
                       <% } %>
@@ -83,10 +99,23 @@
                   </li>
                 <% } %>
               <% } %>
-            <% } %>
+          <form method="post">
+          <input type="hidden" name="indexId" value="<%= i+1 %>">
           <li class="table-footer">
-            <div class="col col-8">Total Price <%= price[i].total_price %>฿</div>
+            <div class="col col-7">Total Price&nbsp;&nbsp;<%= price[i].total_price %>฿</div>
+            <div class="col col-8">Payment Status&nbsp;&nbsp;<input type="checkbox" class="ui-checkbox"></div>
+              <div class="col col-9">
+                <button type="submit" class="cta">
+                  <span>Serve Already</span>
+                  <svg width="15px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </button>
+              </div>
           </li>
+          </form>
+            <% } %>
           <% } %>
         </ul>
     </div>
