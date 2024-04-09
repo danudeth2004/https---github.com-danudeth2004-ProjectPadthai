@@ -246,21 +246,15 @@ router.get('/order/cart/end', function(req, res, next) {
     const customer_query = "SELECT customer_id FROM customer ORDER BY customer_id DESC LIMIT 1;";
   
     database.query(customer_query, (err, customer_lastest) => {
-        if (err) {
-            console.error(err);
-        }
-        else{
+        var customer_id = customer_lastest.map(item => [item.customer_id]);
 
-            var customer_id = customer_lastest.map(item => [item.customer_id]);
-
-            const items = req.session.item || [];
-            res.render("th/end",
-                        {title: "EndTH",
-                        items: items,
-                        customer_id: parseInt(customer_id)+1
-            });
-            //res.send(items);
-        }
+        const items = req.session.item || [];
+        res.render("th/end",
+                    {title: "EndTH",
+                    items: items,
+                    customer_id: parseInt(customer_id)+1
+        });
+        //res.send(items);
     });
 });
 

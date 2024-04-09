@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 var homeRouter = require('./routes/home');
 var enRouter = require('./routes/en');
 var thRouter = require('./routes/th');
+var adminRouter = require('./routes/admin');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', homeRouter);
 app.use('/en', enRouter);
 app.use('/th', thRouter);
+app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

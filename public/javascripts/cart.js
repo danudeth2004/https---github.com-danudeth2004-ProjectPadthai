@@ -21,14 +21,8 @@ finishBtn.onclick = () => {
 popupContainer.classList.remove('active');
 }
 
-document.addEventListener('click', function(event) {
-    var thisIndex = document.getElementById("indexIdd");
-    if (event.target.classList.contains('bin-button')) {
-      var listItem = event.target.closest('.table-row');
-      if (listItem) {
-        var index = listItem.getAttribute('data-index');
-        thisIndex.value =  index;
-        console.log(thisIndex.value);
-      }
-    }
-});
+function del() {
+    var index = document.getElementById('index');
+    var indexI = document.getElementById('indexIdd');
+    index.value = indexI.value;
+}

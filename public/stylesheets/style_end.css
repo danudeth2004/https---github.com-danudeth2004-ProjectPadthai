@@ -1,232 +1,237 @@
 * {
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-touch-callout: none;
-    font-family: "Krub", sans-serif;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  font-family: "Krub", sans-serif;
 }
 
 body {
-    width: 100%;
-    font-family: 'lato', sans-serif;
-    background-image: linear-gradient(rgba(218, 190, 179, 0.5), rgba(218, 190, 179, 0.5)), url(../images/end/background-phone-num.jpg);
-    background-size: cover;
-    background-position: center;
-    justify-content: center;
+  width: 100%;
+  font-family: "lato", sans-serif;
+  background-image: linear-gradient(
+      rgba(218, 190, 179, 0.5),
+      rgba(218, 190, 179, 0.5)
+    ),
+    url(../images/end/background-phone-num.jpg);
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
 }
 
 .login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 500px;
-    padding-bottom: 50px;
-    transform: translate(-50%, -50%);
-    background-color: rgba(221, 221, 221, 0.411);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.7);
-    border-radius: 10px;
-  }
-  
-  .login-box .user-box {
-    position: relative;
-  }
-  
-  .login-box .user-box input {
-    text-align: center;
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: 1px solid white;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-  }
-  
-  .btn {
-    background: #cfb8ab;
-    color: #000;
-    border-radius: 5px;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  padding-bottom: 50px;
+  transform: translate(-50%, -50%);
+  background-color: rgba(221, 221, 221, 0.411);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
 
-  .login-box a span {
-    position: absolute;
-    display: block;
-  }
-  
-  @keyframes btn-anim1 {
-    0% {
-      left: -100%;
-    }
-  
-    50%,100% {
-      left: 100%;
-    }
-  }
-  
-  .login-box a span:nth-child(1) {
-    display: flex;
-    bottom: 2px;
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: 1px solid white;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.btn {
+  background: #cfb8ab;
+  color: #000;
+  border-radius: 5px;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+@keyframes btn-anim1 {
+  0% {
     left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #f7a170);
-    animation: btn-anim1 2s linear infinite;
   }
 
-  .add-phone-button {
-    margin-top: 20%;
-    position: relative;
-    overflow: hidden;
-    height: 3rem;
-    padding: 0 2rem;
-    border-radius: 1.5rem;
-    background: #836953;
-    background-size: 400%;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+  50%,
+  100% {
+    left: 100%;
   }
-  
-  .add-phone-button:hover::before {
-    transform: scaleX(1);
-  }
-  
-  .add-phone-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: 0 50%;
-    width: 100%;
-    height: inherit;
-    border-radius: inherit;
-    background: linear-gradient(
-      82.3deg,
-      rgb(111,78,55,1) 10.8%,
-      rgb(196, 171, 143, 1) 94.3%
-    );
-    transition: all 0.475s;
-  }
-  
-  .button-content {
-    position: relative;
-    z-index: 1;
-  }
+}
 
-  .button-content p{
-    font-size: 15px;
-  }
-  
-  .button-content2 {
-    position: relative;
-    z-index: 1;
-  }
+.login-box a span:nth-child(1) {
+  display: flex;
+  bottom: 2px;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f7a170);
+  animation: btn-anim1 2s linear infinite;
+}
 
-  .button-content2 p{
-    font-size: 20px;
-  }
+.add-phone-button {
+  margin-top: 20%;
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #836953;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
 
-  .no-phone-button {
-    position: relative;
-    overflow: hidden;
-    height: 3rem;
-    padding: 0 2rem;
-    border-radius: 1.5rem;
-    background: #836953;
-    background-size: 400%;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .no-phone-button:hover::before {
-    transform: scaleX(1);
-  }
-  
-  .no-phone-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: 0 50%;
-    width: 100%;
-    height: inherit;
-    border-radius: inherit;
-    background: linear-gradient(
-      82.3deg,
-      rgb(111,78,55,1) 10.8%,
-      rgb(196, 171, 143, 1) 94.3%
-    );
-    transition: all 0.475s;
-  }
+.add-phone-button:hover::before {
+  transform: scaleX(1);
+}
 
-  .back-home-button {
-    position: absolute;
-    overflow: hidden;
-    height: 4rem;
-    padding: 0 3rem;
-    border-radius: 2rem;
-    background: #836953;
-    background-size: 400%;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    top: 85%;
-    transform: translate(-50%,-50%);
-  }
-  
-  .back-home-button:hover::before {
-    transform: scaleX(1);
-  }
-  
-  .back-home-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: 0 50%;
-    width: 100%;
-    height: inherit;
-    border-radius: inherit;
-    background: linear-gradient(
-      82.3deg,
-      rgb(111,78,55,1) 10.8%,
-      rgb(196, 171, 143, 1) 94.3%
-    );
-    transition: all 0.475s;
-  }
+.add-phone-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(
+    82.3deg,
+    rgb(111, 78, 55, 1) 10.8%,
+    rgb(196, 171, 143, 1) 94.3%
+  );
+  transition: all 0.475s;
+}
+
+.button-content {
+  position: relative;
+  z-index: 1;
+}
+
+.button-content p {
+  font-size: 15px;
+}
+
+.button-content2 {
+  position: relative;
+  z-index: 1;
+}
+
+.button-content2 p {
+  font-size: 20px;
+}
+
+.no-phone-button {
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #836953;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.no-phone-button:hover::before {
+  transform: scaleX(1);
+}
+
+.no-phone-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(
+    82.3deg,
+    rgb(111, 78, 55, 1) 10.8%,
+    rgb(196, 171, 143, 1) 94.3%
+  );
+  transition: all 0.475s;
+}
+
+.back-home-button {
+  position: absolute;
+  overflow: hidden;
+  height: 4rem;
+  padding: 0 3rem;
+  border-radius: 2rem;
+  background: #836953;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  top: 85%;
+  transform: translate(-50%, -50%);
+}
+
+.back-home-button:hover::before {
+  transform: scaleX(1);
+}
+
+.back-home-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(
+    82.3deg,
+    rgb(111, 78, 55, 1) 10.8%,
+    rgb(196, 171, 143, 1) 94.3%
+  );
+  transition: all 0.475s;
+}
 
 .calculator {
-    transform: scale(1.5);
-    width: 200px;
-    margin: 100px auto 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  transform: scale(1.5);
+  width: 200px;
+  margin: 100px auto 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 input[type="text"] {
-    width: 88%;
-    padding: 10px;
-    margin-bottom: 10px;
+  width: 88%;
+  padding: 10px;
+  margin-bottom: 10px;
 }
-  
+
 .user-box {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
 }
-  
+
 .btn {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
 }
 
 #phoneInput {

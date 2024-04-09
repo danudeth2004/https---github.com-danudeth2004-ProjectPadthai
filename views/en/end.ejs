@@ -14,7 +14,13 @@
 </head>
 <body>
     <div class="login-box">
-        <center><h1>Order Number: <%= customer_id %></h1></center>
+        <center><h1>Order Number:&nbsp;
+        <% if(isNaN(customer_id)) {%>
+            1
+        <% }else{ %>
+            <%= customer_id %>
+        <% } %>
+        </h1></center>
         <div class="calculator">
             <input type="text" id="phoneInput" placeholder="Enter Phone Number" readonly>
             <div class="user-box">
