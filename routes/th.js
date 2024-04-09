@@ -8,10 +8,10 @@ router.get('/', function(req, res, next) {
 
 router.get("/order", (req, res, next) => {
 
-  const noodles_query = "SELECT noodles_nameTH,price FROM noodles_type;";
-  const meat_query = "SELECT meat_nameTH,price FROM meat_type;";
-  const topping_query = "SELECT topping_nameTH,price FROM topping_list;";
-  const veg_query = "SELECT veg_nameTH,price FROM veg_list;";
+  const noodles_query = "SELECT noodles_nameTH,price,status FROM noodles_type;";
+  const meat_query = "SELECT meat_nameTH,price,status FROM meat_type;";
+  const topping_query = "SELECT topping_nameTH,price,status FROM topping_list;";
+  const veg_query = "SELECT veg_nameTH,price,status FROM veg_list;";
 
   database.query(noodles_query, (err, noodles_result) => {
       if (err) {

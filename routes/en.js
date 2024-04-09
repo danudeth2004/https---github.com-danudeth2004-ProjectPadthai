@@ -4,10 +4,10 @@ var database = require('../database');
 
 router.get("/order", (req, res, next) => {
 
-    const noodles_query = "SELECT noodles_nameEN,price FROM noodles_type;";
-    const meat_query = "SELECT meat_nameEN,price FROM meat_type;";
-    const topping_query = "SELECT topping_nameEN,price FROM topping_list;";
-    const veg_query = "SELECT veg_nameEN,price FROM veg_list;";
+    const noodles_query = "SELECT noodles_nameEN,price,status FROM noodles_type;";
+    const meat_query = "SELECT meat_nameEN,price,status FROM meat_type;";
+    const topping_query = "SELECT topping_nameEN,price,status FROM topping_list;";
+    const veg_query = "SELECT veg_nameEN,price,status FROM veg_list;";
   
     database.query(noodles_query, (err, noodles_result) => {
         if (err) {

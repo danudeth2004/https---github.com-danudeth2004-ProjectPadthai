@@ -10,6 +10,9 @@ function changeTH() {
 function changeEN() {
     window.location.href = "/en/order";
 }
+function backtohome() {
+    window.location.href = "/";
+}
 
 function showImgNoodles(){
     img = document.getElementById("noodles").value;
