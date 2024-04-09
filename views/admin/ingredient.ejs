@@ -3,9 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Ingredient</title>
+    <link rel="stylesheet" href="/stylesheets/style_ingredient.css" type="text/css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Gilda+Display&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Protest+Strike&family=Rowdies&family=Shippori+Mincho&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    ss
+    <button class="back" onclick="backtoadmin()"><i class='bx bxs-chevron-left' ></i></button>
+    <form method="post">
+    <div class="container">
+        <h1>Edit Ingredient</h1>
+        <h3>Noodles Type</h3>
+        <ul class="responsive-table">
+          <li class="table-header">
+            <div class="col col-1-1">ID</div>
+            <div class="col col-2-1">Noodles EN name</div>
+            <div class="col col-3-1">Noodles TH name</div>
+            <div class="col col-4-1">Price</div>
+            <div class="col col-5-1">Status</div>
+          </li>
+          <% for(var i=0; i < noodles.length;i++){ %>
+            <li class="table-row" data-index="<%= i %>">
+                <div class="col col-1-1" data-label="Id"><%= i+1 %></div>
+                <div class="col col-2-1" data-label="Noodles EN name"><%= noodles[i].noodles_nameEN %></div>
+                <div class="col col-3-1" data-label="Noodles TH name"><%= noodles[i].noodles_nameTH %></div>
+                <div class="col col-4-1" data-label="Price"><input type="text" name="noodle_price<%= i+1 %>" value="<%= noodles[i].price %>" placeholder="<%= noodles[i].price %>"></div>
+                <div class="col col-5-1" data-label="Status">
+                    <% if(noodles[i].status == 1) { %>
+                        <div class="col col-8">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="noodle_status<%= i+1 %>" checked="checked" class="ui-checkbox"></div>
+                    <% } else { %>
+                        <div class="col col-8">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="noodle_status<%= i+1 %>" class="ui-checkbox"></div>
+                    <% } %>
+                </div>
+            </li>
+          <% } %>
+        </ul>
+        <h3>Meat Type</h3>
+        <ul class="responsive-table">
+            <li class="table-header">
+              <div class="col col-1-1">ID</div>
+              <div class="col col-2-1">Meat EN name</div>
+              <div class="col col-3-1">Meat TH name</div>
+              <div class="col col-4-1">Price</div>
+              <div class="col col-5-1">Status</div>
+            </li>
+            <% for(var i=0; i < meats.length;i++){ %>
+              <li class="table-row" data-index="<%= i %>">
+                  <div class="col col-1-1" data-label="Id"><%= i+1 %></div>
+                  <div class="col col-2-1" data-label="Noodles EN name"><%= meats[i].meat_nameEN %></div>
+                  <div class="col col-3-1" data-label="Noodles TH name"><%= meats[i].meat_nameTH %></div>
+                  <div class="col col-4-1" data-label="Price"><input type="text" name="meat_price<%= i+1 %>" value="<%= meats[i].price %>" placeholder="<%= meats[i].price %>"></div>
+                  <div class="col col-5-1" data-label="Status">
+                      <% if(meats[i].status == 1) { %>
+                          <div class="col col-8">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="meat_status<%= i+1 %>" checked="checked" class="ui-checkbox"></div>
+                      <% } else { %>
+                          <div class="col col-8">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="meat_status<%= i+1 %>" class="ui-checkbox"></div>
+                      <% } %>
+                  </div>
+              </li>
+            <% } %>
+        </ul>
+        <h3>Vegetable Type</h3>
+        <ul class="responsive-table">
+            <li class="table-header">
+              <div class="col col-1-1">ID</div>
+              <div class="col col-2-1">Vegetable EN name</div>
+              <div class="col col-3-1">Vegetable TH name</div>
+              <div class="col col-4-1">Price</div>
+              <div class="col col-5-1">Status</div>
+            </li>
+            <% for(var i=0; i < vegs.length;i++){ %>
+              <li class="table-row" data-index="<%= i %>">
+                  <div class="col col-1-1" data-label="Id"><%= i+1 %></div>
+                  <div class="col col-2-1" data-label="Noodles EN name"><%= vegs[i].veg_nameEN %></div>
+                  <div class="col col-3-1" data-label="Noodles TH name"><%= vegs[i].veg_nameTH %></div>
+                  <div class="col col-4-1" data-label="Price"><input type="text" name="veg_price<%= i+1 %>" value="<%= vegs[i].price %>" placeholder="<%= vegs[i].price %>"></div>
+                  <div class="col col-5-1" data-label="Status">
+                      <% if(vegs[i].status == 1) { %>
+                          <div class="col col-8">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="veg_status<%= i+1 %>" checked="checked" class="ui-checkbox"></div>
+                      <% } else { %>
+                          <div class="col col-8">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="veg_status<%= i+1 %>" class="ui-checkbox"></div>
+                      <% } %>
+                  </div>
+              </li>
+            <% } %>
+        </ul>
+        <h3>Topping Type</h3>
+        <ul class="responsive-table">
+            <li class="table-header">
+              <div class="col col-1-1">ID</div>
+              <div class="col col-2-1">Topping EN name</div>
+              <div class="col col-3-1">Topping TH name</div>
+              <div class="col col-4-1">Price</div>
+              <div class="col col-5-1">Status</div>
+            </li>
+            <% for(var i=0; i < toppings.length;i++){ %>
+              <li class="table-row" data-index="<%= i %>">
+                  <div class="col col-1-1" data-label="Id"><%= i+1 %></div>
+                  <div class="col col-2-1" data-label="Noodles EN name"><%= toppings[i].topping_nameEN %></div>
+                  <div class="col col-3-1" data-label="Noodles TH name"><%= toppings[i].topping_nameTH %></div>
+                  <div class="col col-4-1" data-label="Price"><input type="text" name="topping_price<%= i+1 %>" value="<%= toppings[i].price %>" placeholder="<%= toppings[i].price %>"></div>
+                  <div class="col col-5-1" data-label="Status">
+                      <% if(toppings[i].status == 1) { %>
+                          <div class="col col-8">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="topping_status<%= i+1 %>" checked="checked" class="ui-checkbox"></div>
+                      <% } else { %>
+                          <div class="col col-8">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="topping_status<%= i+1 %>" class="ui-checkbox"></div>
+                      <% } %>
+                  </div>
+              </li>
+            <% } %>
+        </ul>
+    </div>
+    <div class="container2">
+        <button onclick="checkboxs()" type="submit" class="btn">
+            <span class="button__text"><p>Save All</p></span>
+            <span class="button__icon"><i class='bx bxs-edit-alt' ></i></span>
+        </button>
+    </div>
+    </form>
 </body>
+<script src="/javascripts/admin.js"></script>
 </html>
