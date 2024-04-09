@@ -71,7 +71,7 @@
                         <select id="meat" onchange="showImgMeat()" width="90%">
                             <label for="n0"><option value="ไม่ระบุ" selected class="selected">เลือกประเภทเนื้อสัตว์</option></label>
                         <% for(var i=0; i < meats.length;i++){ %>
-                            <% if(meats[i].status==1) { %>
+                            <% if(meats[i].status) { %>
                             <label for="n2"><option value="<%= meats[i].meat_nameTH %>"><%= meats[i].meat_nameTH %> (<%= meats[i].price %> ฿)</option></label>
                             <% } %>
                         <% } %>
@@ -84,7 +84,7 @@
                     <div class="object4">
                         <div class="content">
                             <% for(var i=0; i < vegs.length;i++){ %>
-                                <% if(vegs[i].status==1) { %>
+                                <% if(vegs[i].status) { %>
                                 <p><%= vegs[i].veg_nameTH %></p>
                                 <input type="checkbox" id="veg<%= i+1 %>" name="vegTH" value="<%= vegs[i].veg_nameTH %>"/>
                                 <label for="veg<%= i+1 %>">
@@ -99,7 +99,7 @@
                     <div class="object4">
                         <div class="content2">
                             <% for(var i=0; i < toppings.length-2;i++){ %>
-                                <% if(toppings[i].status==1) { %>
+                                <% if(toppings[i].status) { %>
                                 <p><%= toppings[i].topping_nameTH %> 
                                     <% if(i==1){ %>
                                         (<%= toppings[i].price %> ฿)
@@ -114,7 +114,7 @@
                         </div>
                         <div class="content2">  
                             <% for(var i=2; i < toppings.length;i++){ %>
-                                <% if(toppings[i].status==1) { %>
+                                <% if(toppings[i].status) { %>
                                 <p><%= toppings[i].topping_nameTH %></p>
                                 <input type="checkbox" id="top<%= i+1 %>" name="topTH" value="<%= toppings[i].topping_nameTH %>"/>
                                 <label for="top<%= i+1 %>">

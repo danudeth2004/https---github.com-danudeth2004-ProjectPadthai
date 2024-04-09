@@ -95,7 +95,7 @@ router.post('/order/cart/end', function(req, res, next) {
         var noodles_type_TH = items[i]["noodlesTH"];
         var meat_type_TH = items[i]["meatTH"];
     
-        var add_veg_TH = items[i]["vegTh"];
+        var add_veg_TH = items[i]["vegTH"];
         var veg_TH =  "";
     
         var add_topping_TH = items[i]["topTH"];
@@ -226,12 +226,21 @@ router.post('/order/cart/end', function(req, res, next) {
                     else {
                         var values = order_id_data.map(item => [item.order_id]);
             
-                        const queryString_payment = 'INSERT INTO submit_order (order_id, Detail_id,customer_id, serve) VALUES (?,?,?,?)';
+                        const queryString_payment = 'INSERT INTO submit_order (order_id, Detail_id, customer_id, serve) VALUES (?,?,?,?)';
                         database.query(queryString_payment, [values, values_detailid, values, 0], (err, data) => {
                             if (err) {
                                 console.error(err);
                             }
                             else console.log("Query Submit Successfully.");
+                            
+                            /* End Session */
+                            req.session.destroy(function(err) {
+                                if (err) {
+                                    console.error('Error destroying session:', err);
+                                } else {
+                                    console.log('Session destroyed successfully');
+                                }
+                            });
                         });
                     };
                 });

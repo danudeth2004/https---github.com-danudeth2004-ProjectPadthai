@@ -12,7 +12,7 @@
 
 body {
   width: 100%;
-  background-color: #fff;
+  background-color: #947360;
   background-size: cover;
   background-position: center;
   justify-content: center;
@@ -62,12 +62,6 @@ h1 {
     align-items: center;
   }
 
-  .table-row:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 25px #fff, 0 0 50px #fff;
-    transition: 0.1s linear;
-  }
-
   .table-footer {
     background-color: #b5a499;
     font-size: 20px;
@@ -79,31 +73,27 @@ h1 {
   }
 
   .col-1 {
-    flex-basis: 5%;
-  }
-
-  .col-2 {
-    flex-basis: 12%;
-  }
-
-  .col-3 {
     flex-basis: 8%;
   }
 
+  .col-2 {
+    flex-basis: 8%;
+  }
+
+  .col-3 {
+    flex-basis: 12%;
+  }
+
   .col-4 {
-    flex-basis: 35%;
+    flex-basis: 12%;
   }
 
   .col-5 {
-    flex-basis: 20%;
+    flex-basis: 30%;
   }
 
   .col-6 {
-    flex-basis: 10%;
-  }
-
-  .col-7 {
-    flex-basis: 6%;
+    flex-basis: 30%;
   }
 
   .col-8 {
