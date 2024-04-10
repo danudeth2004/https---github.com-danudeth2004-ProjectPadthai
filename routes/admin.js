@@ -224,9 +224,9 @@ router.post('/ingredient', function (req, res, next) {
     database.query(queryMeat_price2, [meat2_p], (err, data) => {});
 
     const queryVeg_price1 = 'UPDATE veg_list SET price=? WHERE id=1';
-    database.query(queryMeat_price1, [veg1_p], (err, data) => {});
+    database.query(queryVeg_price1, [veg1_p], (err, data) => {});
     const queryVeg_price2 = 'UPDATE veg_list SET price=? WHERE id=2';
-    database.query(queryMeat_price2, [veg2_p], (err, data) => {});
+    database.query(queryVeg_price2, [veg2_p], (err, data) => {});
 
     const queryTopping_price1 = 'UPDATE topping_list SET price=? WHERE id=1';
     database.query(queryTopping_price1, [topping1_p], (err, data) => {});
