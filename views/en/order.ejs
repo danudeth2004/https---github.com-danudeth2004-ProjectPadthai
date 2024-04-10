@@ -99,10 +99,7 @@
                         <div class="content2">
                             <% for(var i=0; i < toppings.length-2;i++){ %>
                                 <% if(toppings[i].status) { %>
-                                <p><%= toppings[i].topping_nameEN %> 
-                                    <% if(i==1){ %>
-                                        (<%= toppings[i].price %> ฿)
-                                    <% } %>
+                                <p><%= toppings[i].topping_nameEN %>
                                 </p>
                                 <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameEN %>"/>
                                 <label for="top<%= i+1 %>">
@@ -114,7 +111,11 @@
                         <div class="content2">
                             <% for(var i=2; i < toppings.length;i++){ %>
                                 <% if(toppings[i].status) { %>
-                                <p><%= toppings[i].topping_nameEN %></p>
+                                <p><%= toppings[i].topping_nameEN %>
+                                    <% if(i==2){ %>
+                                        (<%= toppings[i].price %> ฿)
+                                    <% } %>
+                                </p>
                                 <input type="checkbox" id="top<%= i+1 %>" name="topEN" value="<%= toppings[i].topping_nameEN %>"/>
                                 <label for="top<%= i+1 %>">
                                     <img src="../images/order/top<%= i+1 %>.jpg" width="292.5px" height="220px">

@@ -99,7 +99,7 @@ function checkDropdown(){
     time.value = hours + ":" + minutes + ":" + seconds;
 
     var prices = document.getElementById("price");
-    var top_price = document.getElementById("top2");
+    var top_price = document.getElementById("top3");
 
     if(nn2.value == "Pork" || nn2.value == "หมู"){
         prices.value = 40;
