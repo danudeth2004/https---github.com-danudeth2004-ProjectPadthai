@@ -132,62 +132,80 @@ router.post('/ingredient', function (req, res, next) {
     var noodle4 = req.body.noodle_status4;
     var noodle5 = req.body.noodle_status5;
 
+    if(noodle1 == 'on') noodle1 = 1; else noodle1 = 0;
+    if(noodle2 == 'on') noodle2 = 1; else noodle2 = 0;
+    if(noodle3 == 'on') noodle3 = 1; else noodle3 = 0;
+    if(noodle4 == 'on') noodle4 = 1; else noodle4 = 0;
+    if(noodle5 == 'on') noodle5 = 1; else noodle5 = 0;
+
     var meat1 = req.body.meat_status1;
     var meat2 = req.body.meat_status2;
 
+    if(meat1 == 'on'){
+        console.log(meat1);
+        meat1 = 1;
+    } else{
+        console.log(meat1);
+        meat1 = 0;
+    } 
+    if(meat2 == 'on') meat2 = 1; else meat2 = 0;
+
     var veg1 = req.body.veg_status1;
     var veg2 = req.body.veg_status2;
+
+    if(veg1 == 'on') {
+        console.log(veg1);
+        veg1 = 1; 
+    }else {
+        console.log(veg1);
+        veg1 = 0;
+    }
+    if(veg2 == 'on') veg2 = 1; else veg2 = 0;
 
     var topping1 = req.body.topping_status1;
     var topping2 = req.body.topping_status2;
     var topping3 = req.body.topping_status3;
     var topping4 = req.body.topping_status4;
 
-    if(noodle1 === 'on') noodle1 = 1; else noodle1 = 0;
-    if(noodle2 === 'on') noodle2 = 1; else noodle2 = 0;
-    if(noodle3 === 'on') noodle3 = 1; else noodle3 = 0;
-    if(noodle4 === 'on') noodle4 = 1; else noodle4 = 0;
-    if(noodle5 === 'on') noodle5 = 1; else noodle5 = 0;
+    if(topping1 == 'on') {
+        console.log(topping1);
+        topping1 = 1;
+    } else {
+        console.log(topping1);
+        topping1 = 0;
+    } 
+    if(topping2 == 'on') topping2 = 1; else topping2 = 0;
+    if(topping3 == 'on') topping3 = 1; else topping3 = 0;
+    if(topping4 == 'on') topping4 = 1; else topping4 = 0;
 
-    if(meat1 === 'on') meat1 = 1; else meat1 = 1;
-    if(meat2 === 'on') meat2 = 1; else meat2 = 1;
-
-    if(veg1 === 'on') veg1 = 1; else veg1 = 1;
-    if(veg2 === 'on') veg2 = 1; else veg2 = 1;
-
-    if(topping1 === 'on') topping1 = 1; else topping1 = 1;
-    if(topping2 === 'on') topping2 = 1; else topping2 = 1;
-    if(topping3 === 'on') topping3 = 1; else topping3 = 1;
-    if(topping4 === 'on') topping4 = 1; else topping4 = 1;
-
-    const queryNoodles_status1 = 'UPDATE noodles_type SET status=? WHERE id=1';
+    const queryNoodles_status1 = 'UPDATE noodles_type SET status=? WHERE id=1;';
     database.query(queryNoodles_status1, [noodle1], (err, data) => {});
-    const queryNoodles_status2 = 'UPDATE noodles_type SET status=? WHERE id=2';
+    const queryNoodles_status2 = 'UPDATE noodles_type SET status=? WHERE id=2;';
     database.query(queryNoodles_status2, [noodle2], (err, data) => {});
-    const queryNoodles_status3 = 'UPDATE noodles_type SET status=? WHERE id=3';
+    const queryNoodles_status3 = 'UPDATE noodles_type SET status=? WHERE id=3;';
     database.query(queryNoodles_status3, [noodle3], (err, data) => {});
-    const queryNoodles_status4 = 'UPDATE noodles_type SET status=? WHERE id=4';
+    const queryNoodles_status4 = 'UPDATE noodles_type SET status=? WHERE id=4;';
     database.query(queryNoodles_status4, [noodle4], (err, data) => {});
-    const queryNoodles_status5 = 'UPDATE noodles_type SET status=? WHERE id=5';
+    const queryNoodles_status5 = 'UPDATE noodles_type SET status=? WHERE id=5;';
     database.query(queryNoodles_status5, [noodle5], (err, data) => {});
 
-    const queryMeat_status1 = 'UPDATE meat_type SET status=? WHERE id=1';
+    const queryMeat_status1 = 'UPDATE meat_type SET status=? WHERE id=1;';
     database.query(queryMeat_status1, [meat1], (err, data) => {});
-    const queryMeat_status2 = 'UPDATE meat_type SET status=? WHERE id=2';
+    const queryMeat_status2 = 'UPDATE meat_type SET status=? WHERE id=2;';
     database.query(queryMeat_status2, [meat2], (err, data) => {});
 
-    const queryVeg_status1 = 'UPDATE veg_list SET status=? WHERE id=1';
+    const queryVeg_status1 = 'UPDATE veg_list SET status=? WHERE id=1;';
     database.query(queryVeg_status1, [veg1], (err, data) => {});
-    const queryVeg_status2 = 'UPDATE veg_list SET status=? WHERE id=2';
+    const queryVeg_status2 = 'UPDATE veg_list SET status=? WHERE id=2;';
     database.query(queryVeg_status2, [veg2], (err, data) => {});
 
-    const queryTopping_status1 = 'UPDATE topping_list SET status=? WHERE id=1';
+    const queryTopping_status1 = 'UPDATE topping_list SET status=? WHERE id=1;';
     database.query(queryTopping_status1, [topping1], (err, data) => {});
-    const queryTopping_status2 = 'UPDATE topping_list SET status=? WHERE id=2';
+    const queryTopping_status2 = 'UPDATE topping_list SET status=? WHERE id=2;';
     database.query(queryTopping_status2, [topping2], (err, data) => {});
-    const queryTopping_status3 = 'UPDATE topping_list SET status=? WHERE id=3';
+    const queryTopping_status3 = 'UPDATE topping_list SET status=? WHERE id=3;';
     database.query(queryTopping_status3, [topping1], (err, data) => {});
-    const queryTopping_status4 = 'UPDATE topping_list SET status=? WHERE id=4';
+    const queryTopping_status4 = 'UPDATE topping_list SET status=? WHERE id=4;';
     database.query(queryTopping_status4, [topping2], (err, data) => {});
     
     var noodle1_p = req.body.noodle_price1;
