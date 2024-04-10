@@ -149,16 +149,16 @@ router.post('/ingredient', function (req, res, next) {
     if(noodle4 === 'on') noodle4 = 1; else noodle4 = 0;
     if(noodle5 === 'on') noodle5 = 1; else noodle5 = 0;
 
-    if(meat1 === 'on') meat1 = 1; else meat1 = 0;
-    if(meat2 === 'on') meat2 = 1; else meat2 = 0;
+    if(meat1 === 'on') meat1 = 1; else meat1 = 1;
+    if(meat2 === 'on') meat2 = 1; else meat2 = 1;
 
-    if(veg1 === 'on') veg1 = 1; else veg1 = 0;
-    if(veg2 === 'on') veg2 = 1; else veg2 = 0;
+    if(veg1 === 'on') veg1 = 1; else veg1 = 1;
+    if(veg2 === 'on') veg2 = 1; else veg2 = 1;
 
-    if(topping1 === 'on') topping1 = 1; else topping1 = 0;
-    if(topping2 === 'on') topping2 = 1; else topping2 = 0;
-    if(topping3 === 'on') topping3 = 1; else topping3 = 0;
-    if(topping4 === 'on') topping4 = 1; else topping4 = 0;
+    if(topping1 === 'on') topping1 = 1; else topping1 = 1;
+    if(topping2 === 'on') topping2 = 1; else topping2 = 1;
+    if(topping3 === 'on') topping3 = 1; else topping3 = 1;
+    if(topping4 === 'on') topping4 = 1; else topping4 = 1;
 
     const queryNoodles_status1 = 'UPDATE noodles_type SET status=? WHERE id=1';
     database.query(queryNoodles_status1, [noodle1], (err, data) => {});
@@ -178,8 +178,8 @@ router.post('/ingredient', function (req, res, next) {
 
     const queryVeg_status1 = 'UPDATE veg_list SET status=? WHERE id=1';
     database.query(queryVeg_status1, [veg1], (err, data) => {});
-    const querVeg_status2 = 'UPDATE veg_list SET status=? WHERE id=2';
-    database.query(querVeg_status2, [veg2], (err, data) => {});
+    const queryVeg_status2 = 'UPDATE veg_list SET status=? WHERE id=2';
+    database.query(queryVeg_status2, [veg2], (err, data) => {});
 
     const queryTopping_status1 = 'UPDATE topping_list SET status=? WHERE id=1';
     database.query(queryTopping_status1, [topping1], (err, data) => {});
