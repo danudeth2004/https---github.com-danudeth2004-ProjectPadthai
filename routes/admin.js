@@ -165,7 +165,7 @@ router.post('/ingredient', function (req, res, next) {
     const queryNoodles_status2 = 'UPDATE noodles_type SET status=? WHERE id=2';
     database.query(queryNoodles_status2, [noodle2], (err, data) => {});
     const queryNoodles_status3 = 'UPDATE noodles_type SET status=? WHERE id=3';
-    database.query(queryNoodles_status3, [noodle3], (err, data) => {});
+    database.query(queryNoodles_status3, [noodle3], (errn, data) => {});
     const queryNoodles_status4 = 'UPDATE noodles_type SET status=? WHERE id=4';
     database.query(queryNoodles_status4, [noodle4], (err, data) => {});
     const queryNoodles_status5 = 'UPDATE noodles_type SET status=? WHERE id=5';
@@ -229,13 +229,13 @@ router.post('/ingredient', function (req, res, next) {
     database.query(queryMeat_price2, [veg2_p], (err, data) => {});
 
     const queryTopping_price1 = 'UPDATE topping_list SET price=? WHERE id=1';
-    database.query(queryTopping_price1, [topping1], (err, data) => {});
+    database.query(queryTopping_price1, [topping1_p], (err, data) => {});
     const queryTopping_price2 = 'UPDATE topping_list SET price=? WHERE id=2';
-    database.query(queryTopping_price2, [topping2], (err, data) => {});
+    database.query(queryTopping_price2, [topping2_p], (err, data) => {});
     const queryTopping_price3 = 'UPDATE topping_list SET price=? WHERE id=3';
-    database.query(queryTopping_price3, [topping1], (err, data) => {});
+    database.query(queryTopping_price3, [topping3_p], (err, data) => {});
     const queryTopping_price4 = 'UPDATE topping_list SET price=? WHERE id=4';
-    database.query(queryTopping_price4, [topping2], (err, data) => {});
+    database.query(queryTopping_price4, [topping4_p], (err, data) => {});
 
     res.redirect('ingredient');
 }); 
