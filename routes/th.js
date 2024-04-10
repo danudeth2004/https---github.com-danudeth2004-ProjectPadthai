@@ -241,13 +241,13 @@ router.post('/order/cart/end', function(req, res, next) {
                                     console.log('Session destroyed successfully');
                                 }
                             });
-                            res.redirect('/');
                         });
                     };
                 });
             };
         });
     }
+    res.redirect('/');
 });
 
 router.get('/order/cart/end', function(req, res, next) {

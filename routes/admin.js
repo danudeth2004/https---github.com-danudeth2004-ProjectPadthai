@@ -165,7 +165,7 @@ router.post('/ingredient', function (req, res, next) {
     const queryNoodles_status2 = 'UPDATE noodles_type SET status=? WHERE id=2';
     database.query(queryNoodles_status2, [noodle2], (err, data) => {});
     const queryNoodles_status3 = 'UPDATE noodles_type SET status=? WHERE id=3';
-    database.query(queryNoodles_status3, [noodle3], (errn, data) => {});
+    database.query(queryNoodles_status3, [noodle3], (err, data) => {});
     const queryNoodles_status4 = 'UPDATE noodles_type SET status=? WHERE id=4';
     database.query(queryNoodles_status4, [noodle4], (err, data) => {});
     const queryNoodles_status5 = 'UPDATE noodles_type SET status=? WHERE id=5';
