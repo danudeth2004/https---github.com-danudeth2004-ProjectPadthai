@@ -166,8 +166,8 @@ router.post('/order/cart/end', function(req, res, next) {
             console.error(err);
         }
         else {
-            var order_date = items[req.session.item.length-1]["order_date"];
-            var order_time = items[req.session.item.length-1]["order_time"];
+            var order_date = items[items.length-1]["order_date"];
+            var order_time = items[items.length-1]["order_time"];
             var values = cus_id_data.map(item => [item.customer_id]);
 
             const queryString_income = 'INSERT INTO order_income (order_id, order_date, order_time, customer_id) VALUES (?,?,?,?)'
@@ -188,7 +188,7 @@ router.post('/order/cart/end', function(req, res, next) {
         }
         else {
             var total_price = 0
-            for(var i = 0; i < req.session.item.length; i++){
+            for(var i = 0; i < items.length; i++){
                 if((items[i]["price"]) == null){
                     items[i]["price"] = 0;
                 }
@@ -208,7 +208,7 @@ router.post('/order/cart/end', function(req, res, next) {
     });
 
     /* Submit_order */
-    for(var i = req.session.item.length-1; i >= 0; i--) {
+    for(var i = items.length-1; i >= 0; i--) {
         const queryString_detailid = 'SELECT MAX(detail_id)-? AS detail_id FROM order_detail';
         database.query(queryString_detailid, [i], (err, detail_id_data) => {
             if (err) {
@@ -232,21 +232,20 @@ router.post('/order/cart/end', function(req, res, next) {
                                 console.error(err);
                             }
                             else console.log("Query Submit Successfully.");
-                            
-                            /* End Session */
-                            req.session.destroy(function(err) {
-                                if (err) {
-                                    console.error('Error destroying session:', err);
-                                } else {
-                                    console.log('Session destroyed successfully');
-                                }
-                            });
                         });
                     };
                 });
             };
         });
     }
+    /* End Session */
+    req.session.destroy(function(err) {
+        if (err) {
+            console.error('Error destroying session:', err);
+        } else {
+            console.log('Session destroyed successfully');
+        }
+    });
     res.redirect('/');
 });
 
